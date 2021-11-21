@@ -1,4 +1,5 @@
 ﻿{% load static %}   
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -231,11 +232,18 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr><td>1</td> <td></i> 1</td><td><i class="cc BTC fs-14 me-5"></i>{{worker1}}</td></tr>
-											<tr><td>2</td> <td></i> 2</td><td><i class="cc BTC fs-14 me-5"></i>{{worker2}}</td></tr>
-											<tr><td>3</td> <td></i> 3</td><td><i class="cc BTC fs-14 me-5"></i>{{worker3}}</td></tr>
-											<tr><td>4</td> <td></i> 4</td><td><i class="cc BTC fs-14 me-5"></i>{{worker4}}</td></tr>
-											<tr><td>5</td> <td></i> 5</td><td><i class="cc BTC fs-14 me-5"></i>{{worker5}}</td></tr>
+											<!-- {% for i in response %} -->
+											<!-- <tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
+											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
+											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
+											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
+											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr> -->
+											<!-- {% endfor %} -->
+											<tr><td>1</td> <td></i> 1</td><td><i class="cc BTC fs-14 me-5"></i>0.1</td></tr>
+											<tr><td>2</td> <td></i> 2</td><td><i class="cc BTC fs-14 me-5"></i>0.2</td></tr>
+											<tr><td>3</td> <td></i> 3</td><td><i class="cc BTC fs-14 me-5"></i>0.3</td></tr>
+											<tr><td>4</td> <td></i> 4</td><td><i class="cc BTC fs-14 me-5"></i>0.4</td></tr>
+											<tr><td>5</td> <td></i> 5</td><td><i class="cc BTC fs-14 me-5"></i>0.5</td></tr>
 										</tbody>							
 									</table>
 								</div>
@@ -354,7 +362,7 @@
 									</div>
 								</div>
 							</div>
-							<div id="chartdiv30" class="h-400"></div>
+							<div id="chartdiv" class="h-400"></div>
 						</div>
 					</div>
 					<div class="box">
@@ -362,81 +370,105 @@
 						  <h4 class="box-title">Your Current Fleet</h4>
 						</div>
 						<div class="box-body">
-							<div class="table-responsive buyorder">
-								<table class="table no-margin min-pad-table">
-									<thead>
-										<tr>
-											<th>Star</th>
-											<th>Price</th>
-											<th>Quantity</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										<td>1</td>
-										<td>17800.00</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>2</td>
-										<td>13950.00</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>3</td>
-										<td>19555.22</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>4</td>
-										<td>19555.22</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>5</td>
-										<td>19555.22</td>
-										<td>2</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="table-responsive buyorder">
-								<table class="table no-margin min-pad-table">
-									<thead>
-										<tr>
-											<th>MP</th>
-											<th>Price</th>
-											<th>Quantity</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										<td>1</td>
-										<td>17800.00</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>2</td>
-										<td>13950.00</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>3</td>
-										<td>19555.22</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>4</td>
-										<td>19555.22</td>
-										<td>2</td>
-										</tr>
-										<tr>
-										<td>5</td>
-										<td>19555.22</td>
-										<td>2</td>
-										</tr>
-									</tbody>
-								</table>
+							<div class="container">
+								<div class="row row-cols-2">
+								  <div class="col">Total Workers: 5</div>
+								  <div class="col">Total MP: 1000</div>
+								  <div class="col">Fleet Rank: A</div>
+								  <div class="col">Total Cost: $500</div>
+								</div>
+							  </div>
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="table table-striped table-hover">
+										<table class="table no-margin min-pad-table" style="width: 100%">
+											<colgroup>
+												<col span="1" style="width: 30%;">
+												<col span="1" style="width: 30%;">
+												<col span="1" style="width: 40%;">
+											</colgroup>
+											<thead>
+												<tr>
+													<th>Spaceship Star</th>
+													<th>Price</th>
+													<th>Quantity</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+												<td>1</td>
+												<td>17800.00</td>
+												<td>2</td>
+												</tr>
+												<tr>
+												<td>2</td>
+												<td>13950.00</td>
+												<td>2</td>
+												</tr>
+												<tr>
+												<td>3</td>
+												<td>19555.22</td>
+												<td>2</td>
+												</tr>
+												<tr>
+												<td>4</td>
+												<td>19555.22</td>
+												<td>2</td>
+												</tr>
+												<tr>
+												<td>5</td>
+												<td>19555.22</td>
+												<td>2</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="col-xs-6">
+								<div class="table-responsive table-striped table-hover" style="width: 100%">
+									<table class="table no-margin min-pad-table">
+										<colgroup>
+											<col span="1" style="width: 30%;">
+											<col span="1" style="width: 30%;">
+											<col span="1" style="width: 40%;">
+										 </colgroup>
+										<thead>
+											<tr>
+												<th>Worker MP</th>
+												<th>Price</th>
+												<th>Quantity</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+											<td>1</td>
+											<td>17800.00</td>
+											<td>2</td>
+											</tr>
+											<tr>
+											<td>2</td>
+											<td>13950.00</td>
+											<td>2</td>
+											</tr>
+											<tr>
+											<td>3</td>
+											<td>19555.22</td>
+											<td>2</td>
+											</tr>
+											<tr>
+											<td>4</td>
+											<td>19555.22</td>
+											<td>2</td>
+											</tr>
+											<tr>
+											<td>5</td>
+											<td>19555.22</td>
+											<td>2</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								</div>
 							</div>
 							<div class="d-flex justify-content-between pt-5">
 								<button type="button" class="btn btn-danger mt-0">Clear</button>
@@ -495,6 +527,151 @@
 	<!-- Crypto Tokenizer Admin App -->
 	<script src=" {% static 'js/template.js' %} "></script>
 	<script src=" {% static 'js/dashboard.js' %} "></script>
-	
+
+	<!-- chart -->
+	<style>
+		#chartdiv {
+		  width: 100%;
+		  height: 500px;
+		  max-width: 100%;
+		}
+		</style>
+		
+		<!-- Resources -->
+		<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+		
+		<!-- Chart code -->
+		<script>
+		am5.ready(function() {
+		
+		/**
+		 * ---------------------------------------
+		 * This demo was created using amCharts 5.
+		 *
+		 * For more information visit:
+		 * https://www.amcharts.com/
+		 *
+		 * Documentation is available at:
+		 * https://www.amcharts.com/docs/v5/
+		 * ---------------------------------------
+		 */
+		
+		// Create root element
+		// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+		var root = am5.Root.new("chartdiv");
+		
+		
+		// Set themes
+		// https://www.amcharts.com/docs/v5/concepts/themes/
+		root.setThemes([
+		  am5themes_Animated.new(root)
+		]);
+		
+		
+		// Create chart
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/
+		var chart = root.container.children.push(am5xy.XYChart.new(root, {
+		  panX: false,
+		  panY: false,
+		  wheelX: "panX",
+		  wheelY: "zoomX"
+		}));
+		
+		
+		// Add cursor
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+		var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+		  behavior: "zoomX"
+		}));
+		cursor.lineY.set("visible", false);
+		
+		// Generate random data
+		var date = new Date();
+		date.setHours(0, 0, 0, 0);
+		var value = 1;
+		
+		function generateData() {
+		  value = Math.round((Math.random() * 10 - 5) + value);
+		  if (date.getDay() == 5) {
+			am5.time.add(date, "day", 3);
+		  } else {
+			am5.time.add(date, "day", 1);
+		  }
+		
+		  return {
+			date: date.getTime(),
+			value: value
+		  };
+		}
+		
+		function generateDatas(count) {
+		  var data = [];
+		  for (var i = 0; i < count; ++i) {
+			data.push(generateData());
+		  }
+		  return data;
+		}
+		
+		// Create axes
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/
+		var xRenderer = am5xy.AxisRendererX.new(root, {});
+		xRenderer.labels.template.set("minPosition", 0.01);
+		xRenderer.labels.template.set("maxPosition", 0.99);
+		
+		var xAxis = chart.xAxes.push(
+		  am5xy.CategoryDateAxis.new(root, {
+			categoryField: "date",
+			baseInterval: {
+			  timeUnit: "day",
+			  count: 1
+			},
+			renderer: xRenderer,
+			tooltip: am5.Tooltip.new(root, {})
+		  })
+		);
+		
+		var yAxis = chart.yAxes.push(
+		  am5xy.ValueAxis.new(root, {
+			renderer: am5xy.AxisRendererY.new(root, {})
+		  })
+		);
+		
+		
+		// Add series
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+		var series = chart.series.push(am5xy.LineSeries.new(root, {
+		  name: "Series",
+		  xAxis: xAxis,
+		  yAxis: yAxis,
+		  valueYField: "value",
+		  categoryXField: "date"
+		}));
+		
+		var tooltip = series.set("tooltip", am5.Tooltip.new(root, {}));
+		tooltip.label.set("text", "{valueY}");
+		
+		// Add scrollbar
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+		chart.set("scrollbarX", am5.Scrollbar.new(root, {
+		  orientation: "horizontal"
+		}));
+		
+		
+		// Set data
+		var data = generateDatas(200);
+		series.data.setAll(data);
+		xAxis.data.setAll(data);
+		
+		
+		// Make stuff animate on load
+		// https://www.amcharts.com/docs/v5/concepts/animations/
+		series.appear(1000);
+		chart.appear(1000, 100);
+		
+		}); // end am5.ready()
+	</script>
 </body>
 </html>
