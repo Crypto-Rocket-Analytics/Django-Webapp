@@ -5,6 +5,7 @@ import sys
 
 
 def main():
+    print("start manage.py")
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rocket-webapp.settings')
     try:

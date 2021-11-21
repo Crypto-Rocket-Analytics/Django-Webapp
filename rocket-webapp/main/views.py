@@ -1,3 +1,4 @@
+from django.http import response
 from django.shortcuts import render
 import threading
 import requests
@@ -7,7 +8,9 @@ import json
 
 # Create your views here.
 def index (request): 
-    return render(request, 'main/index.html')
+    df_spaceships, df_workers = getRawData()
+    # response in json that contains info we want
+    return render(request, 'main/index.html', {'response':response})
 
 def sendReq(gop, url, data, headers):
     furl = url
@@ -21,7 +24,7 @@ def sendReq(gop, url, data, headers):
     return response
 
 # Get raw data
-def getRawData( ):
+def getRawData():
     def sendReq(gop, url, data, headers):
         furl = url
         print(furl)
