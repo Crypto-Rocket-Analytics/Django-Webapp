@@ -9,7 +9,13 @@ import json
 # Create your views here.
 def index (request): 
     df_spaceships, df_workers = getRawData()
-    # response in json that contains info we want
+    sp_prices = get_min_spaceships(df_spaceships)
+    wk_prices = get_min_workers(df_workers)
+    res = {}
+    res['spaceships'] = sp_prices
+    res['workers'] = wk_prices
+    response = json.dumps(res)
+    print(response)
     return render(request, 'main/index.html', {'response':response})
 
 def sendReq(gop, url, data, headers):
@@ -43,6 +49,7 @@ def getRawData():
     url = 'https://api.cryptomines.app/api/spaceships'
 
     response = sendReq('GET', url, {}, headers)
+    print("get response")
     res = response.json()
     # df_spaceships = pd.read_json(json.dumps(res))
     df_spaceships = pd.json_normalize(res)
@@ -66,10 +73,6 @@ def getRawData():
 
     return df_spaceships, df_workers
 
-def reloadapi():
-    threading.Timer(5.0, reloadapi).start()
-    r2 = requests.get('https://api.cryptomines.app/api/spaceships')
-    result= r2.json()
 
 def returnLowestCost(spaceshipSummary, workerSummary, df_spaceships, df_workers):
     # Process spaceship raw data
@@ -97,8 +100,8 @@ def returnLowestCost(spaceshipSummary, workerSummary, df_spaceships, df_workers)
     return workerCost + spaceshipCost
 
 def get_min_spaceships(df_spaceships):
-    df_spaceships_min = df_spaceships[['_id', 'price', 'nftData.level']].groupby('nftData.level').min().rename({'_id': 'Spaceship ID', 'price': 'Spaceship price'}, axis=1)
-    return list(df_spaceships_min['Spaceship price'])
+    df_spaceships_min = df_spaceships[['_id', 'price', 'nftData.level']].groupby('nftData.level').min()
+    return list(df_spaceships_min['price'])
 
 def get_min_workers(df_workers):
     df_workers_min = df_workers[df_workers['nftData.minePower'] >= 15]

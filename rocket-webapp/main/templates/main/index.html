@@ -232,18 +232,18 @@
 											</tr>
 										</thead>
 										<tbody>
-											<!-- {% for i in response %} -->
+											<!-- {% for i in '12345'|make_list %}
+											<tr><td>{{ forloop.counter }}</td> <td></i> {{ forloop.counter }}</td><td><i class="cc BTC fs-14 me-5"></i>{{ forloop.counter }}</td></tr>
+											{% endfor %} -->
+											{% for r in response %}
+											<!-- {% for i in '12345'|make_list %} -->
+											<tr><td>{{ r.spaceships }}</td> <td></i> {{ r.spaceships }}</td><td><i class="cc BTC fs-14 me-5"></i>{{ r.spaceships }}</td></tr>
 											<!-- <tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
 											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
 											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
-											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
 											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr> -->
+											{% endfor %}
 											<!-- {% endfor %} -->
-											<tr><td>1</td> <td></i> 1</td><td><i class="cc BTC fs-14 me-5"></i>0.1</td></tr>
-											<tr><td>2</td> <td></i> 2</td><td><i class="cc BTC fs-14 me-5"></i>0.2</td></tr>
-											<tr><td>3</td> <td></i> 3</td><td><i class="cc BTC fs-14 me-5"></i>0.3</td></tr>
-											<tr><td>4</td> <td></i> 4</td><td><i class="cc BTC fs-14 me-5"></i>0.4</td></tr>
-											<tr><td>5</td> <td></i> 5</td><td><i class="cc BTC fs-14 me-5"></i>0.5</td></tr>
 										</tbody>							
 									</table>
 								</div>

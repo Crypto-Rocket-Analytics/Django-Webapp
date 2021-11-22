@@ -12,4 +12,4 @@ t = threading.Thread(target=ping)
 t.start() # this will run the `ping` function in a separate thread
 
 # now start the django server
-subprocess.call(['python3', 'manage.py', 'runserver', '6001'])
+subprocess.call(['python3', 'manage.py', 'runserver', '6002'])
