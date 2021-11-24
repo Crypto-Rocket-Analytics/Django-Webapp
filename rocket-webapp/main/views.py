@@ -1,4 +1,5 @@
 from django.http import response
+from django.http import JsonResponse
 from django.shortcuts import render
 import threading
 import requests
@@ -6,8 +7,9 @@ import pandas as pd
 import numpy as np
 import json
 
-# Create your views here.
-def index (request): 
+def data_fresh(req):
+    context = {"data1": 1,
+               "data2": 2}
     df_spaceships, df_workers = getRawData()
     sp_prices = get_min_spaceships(df_spaceships)
     wk_prices = get_min_workers(df_workers)
@@ -15,7 +17,12 @@ def index (request):
     res['spaceships'] = sp_prices
     res['workers'] = wk_prices
     response = json.dumps(res)
-    print(response)
+    response = JsonResponse(context)
+    return response
+
+# Create your views here.
+def index (request): 
+    response = data_fresh(request)
     return render(request, 'main/index.html', {'response':response})
 
 def sendReq(gop, url, data, headers):

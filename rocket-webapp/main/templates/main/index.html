@@ -506,9 +506,22 @@
   <div class="control-sidebar-bg"></div>
   
 </div>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- ./wrapper -->	
 	
 	<!-- Vendor JS -->
+	<script>
+    $(document).ready(function(){
+        function refresh(){
+            $.getJSON("/data_fresh/", function (ret) {
+                $('#result').html(ret.data1);
+                $('#result2').html(ret.data2);
+            })
+        }
+        setInterval(refresh, 3000)
+    })
+</script>
+
 	<script src=" {% static 'js/vendors.min.js' %} "></script>
 	<script src=" {% static 'js/pages/chat-popup.js' %} "></script>
     <script src=" {% static 'assets/icons/feather-icons/feather.min.js' %} "></script>
