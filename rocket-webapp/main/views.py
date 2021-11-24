@@ -46,7 +46,7 @@ def getRawData():
     'Content-type': 'application/json',
     }
 
-    url = 'https://api.cryptomines.app/api/spaceships'
+    url = 'https://api.cryptomines.app/api/spaceships?level=1&cursor=0&limit=10000'
 
     response = sendReq('GET', url, {}, headers)
     print("get response")
@@ -62,7 +62,7 @@ def getRawData():
     'Content-type': 'application/json',
     }
 
-    url = 'https://api.cryptomines.app/api/workers'
+    url = 'https://api.cryptomines.app/api/workers?level=1&cursor=0&limit=10000'
     data = {}
     response = sendReq('GET', url, data, headers)
     res = response.json()
