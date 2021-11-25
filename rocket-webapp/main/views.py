@@ -13,11 +13,19 @@ def data_fresh(req):
     df_spaceships, df_workers = getRawData()
     sp_prices = get_min_spaceships(df_spaceships)
     wk_prices = get_min_workers(df_workers)
-    res = {}
-    res['spaceships'] = sp_prices
-    res['workers'] = wk_prices
-    response = json.dumps(res)
-    response = JsonResponse(context)
+    response = []
+    for i in sp_prices:
+        res = {}
+        res['spaceships'] = i
+        response.append(res)
+    for i in range(len(response)):
+        res = response[i]
+        res['workers'] = wk_prices[i]
+    # for i in range(len(response), len(wk_prices)):
+    #     res = {}
+    #     res['workers'] = wk_prices[i]
+    #     response.append(res)
+    # response = JsonResponse(context)
     return response
 
 # Create your views here.
@@ -50,16 +58,23 @@ def getRawData():
         return response
     
     headers = {
-    'Content-type': 'application/json',
+        'Content-type': 'application/json',
     }
+    data = {}
 
-    url = 'https://api.cryptomines.app/api/spaceships?level=1&cursor=0&limit=10000'
+    url_sp = ['https://api.cryptomines.app/api/spaceships?level=1&cursor=0&limit=10000', 
+          'https://api.cryptomines.app/api/spaceships?level=2&cursor=0&limit=10000', 
+          'https://api.cryptomines.app/api/spaceships?level=3&cursor=0&limit=10000', 
+          'https://api.cryptomines.app/api/spaceships?level=4&cursor=0&limit=10000', 
+          'https://api.cryptomines.app/api/spaceships?level=5&cursor=0&limit=10000']
 
-    response = sendReq('GET', url, {}, headers)
-    print("get response")
-    res = response.json()
-    # df_spaceships = pd.read_json(json.dumps(res))
-    df_spaceships = pd.json_normalize(res)
+    res_sp = []
+    for url in url_sp:
+        response = sendReq('GET', url, data, headers)
+        res = response.json()
+        res_sp.extend(res)
+        
+    df_spaceships = pd.json_normalize(res_sp)
     df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
     df_spaceships = df_spaceships[df_spaceships['nftData.level'] != 0]
 
@@ -68,13 +83,21 @@ def getRawData():
     headers = {
     'Content-type': 'application/json',
     }
-
-    url = 'https://api.cryptomines.app/api/workers?level=1&cursor=0&limit=10000'
     data = {}
-    response = sendReq('GET', url, data, headers)
-    res = response.json()
-    # df_workers = pd.read_json(json.dumps(res))
-    df_workers = pd.json_normalize(res)
+
+    url_wk = ['https://api.cryptomines.app/api/workers?level=1&cursor=0&limit=10000',
+         'https://api.cryptomines.app/api/workers?level=2&cursor=0&limit=10000',
+         'https://api.cryptomines.app/api/workers?level=3&cursor=0&limit=10000',
+          'https://api.cryptomines.app/api/workers?level=4&cursor=0&limit=10000',
+          'https://api.cryptomines.app/api/workers?level=5&cursor=0&limit=10000']
+    
+    res_wk = []
+    for url in url_wk:
+        response = sendReq('GET', url, data, headers)
+        res = response.json()
+        res_wk.extend(res)
+        
+    df_workers = pd.json_normalize(res_wk)
     df_workers['price'] = df_workers['price'].astype(float) / 1000000000000000000
     df_workers = df_workers[df_workers['nftData.level'] != 0]
 

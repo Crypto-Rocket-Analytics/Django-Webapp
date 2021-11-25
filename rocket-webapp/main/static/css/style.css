@@ -22604,6 +22604,12 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
   overflow: visible;
   background: #fff url("../images/preloaders/1.gif") no-repeat center center; }
 
+#chartdiv {
+  width: 100%;
+  height: 500px;
+  max-width: 100%;
+}
+
 /*sidebar*/
 .main-sidebar {
   position: absolute;
