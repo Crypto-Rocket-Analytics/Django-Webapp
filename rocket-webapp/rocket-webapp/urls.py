@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls', namespace='main')),
     path('data_fresh/', views.data_fresh, name="data_fresh"),
+    path('full_data_fresh/', views.full_data_fresh, name="full_data_fresh"),
 ]

@@ -100,15 +100,18 @@
 					  <div class="box-header with-border">
 						<h4 class="box-title">Rocket Analytics - How to Use</h4>
 						<h6 class="box-subtitle">Learn how to use our platform step by step</h6>
+						<div class="box-controls pull-right">
+							Eth: 406.00
+						</div>
 					  </div>
 					  <!-- /.box-header -->
 					  <div class="box-body">
 						  <!-- Nav tabs -->
 						  <div class="vtabs">
 							  <ul class="nav nav-tabs tabs-vertical" role="tablist">
-								  <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href=" {% static '#home4' %} " role="tab"><span class="hidden-sm-up"><i class="ion-home"></i></span> <span class="hidden-xs-down">Intro</span> </a> </li>
-								  <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href=" {% static '#profile4' %} " role="tab"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">AI Strategy</span></a> </li>
-								  <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href=" {% static '#messages4' %} " role="tab"><span class="hidden-sm-up"><i class="ion-email"></i></span> <span class="hidden-xs-down">Data Platform</span></a> </li>
+								  <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#home4" role="tab"><span class="hidden-sm-up"><i class="ion-home"></i></span> <span class="hidden-xs-down">Intro</span> </a> </li>
+								  <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#profile4" role="tab"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">AI Strategy</span></a> </li>
+								  <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#messages4" role="tab"><span class="hidden-sm-up"><i class="ion-email"></i></span> <span class="hidden-xs-down">Data Platform</span></a> </li>
 							  </ul>
 							  <!-- Tab panes -->
 							  <div class="tab-content">
@@ -217,9 +220,6 @@
 						<div class="box">
 							<div class="box-header">
 								<h4 class="box-title">Spaceships </h4>
-								<div class="box-controls pull-right">
-									Total: 406.00
-								</div>
 							</div>
 							<div class="box-body pt-0">
 								<div class="table-responsive buy-sall-table">
@@ -231,19 +231,10 @@
 												<th>Min Price: (ETL)</th>
 											</tr>
 										</thead>
-										<tbody>
-											<!-- {% for i in '12345'|make_list %}
-											<tr><td>{{ forloop.counter }}</td> <td></i> {{ forloop.counter }}</td><td><i class="cc BTC fs-14 me-5"></i>{{ forloop.counter }}</td></tr>
-											{% endfor %} -->
+										<tbody class="js-inner">
 											{% for r in response %}
-											<!-- {% for i in '12345'|make_list %} -->
-											<tr><td>1</td> <td></i> 2</td><td><i class="cc BTC fs-14 me-5"></i>{{ r.spaceships }}</td></tr>
-											<!-- <tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
-											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
-											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr>
-											<tr><td>{i+1}</td> <td></i> {i+1}</td><td><i class="cc BTC fs-14 me-5"></i>{i+1}</td></tr> -->
+											<tr><td>{{forloop.counter}}</td> <td></i> {{forloop.counter}}</td><td><i class="cc BTC fs-14 me-5"></i>{{ r.spaceships }}</td></tr>
 											{% endfor %}
-											<!-- {% endfor %} -->
 										</tbody>							
 									</table>
 								</div>
@@ -492,8 +483,12 @@
     $(document).ready(function(){
         function refresh(){
             $.getJSON("/data_fresh/", function (ret) {
-                $('#result').html(ret.data1);
-                $('#result2').html(ret.data2);
+				var jsInnerHTML = '';
+				for(var i = 0; i < ret.length; i++) {
+    				var r = ret[i];
+					jsInnerHTML += `<tr><td>${i+1}</td> <td></i> ${i+1}</td><td><i class="cc BTC fs-14 me-5"></i>${ r.spaceships }</td></tr>`;
+				}
+				document.getElementsByClassName("js-inner")[0].innerHTML = jsInnerHTML;
             })
         }
         setInterval(refresh, 3000)
@@ -508,9 +503,6 @@
 	<script src=" {% static 'assets/vendor_components/apexcharts-bundle/dist/apexcharts.js' %} "></script>	
 	<script src=" {% static 'assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js' %} "></script>	
     <script src=" {% static 'assets/vendor_components/datatable/datatables.min.js' %} "></script>
-	<script src="https://www.amcharts.com/lib/4/core.js"></script>
-	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 	<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>

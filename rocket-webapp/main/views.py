@@ -1,11 +1,11 @@
 from django.http import response
 from django.http import JsonResponse
 from django.shortcuts import render
+import json
 import threading
 import requests
 import pandas as pd
 import numpy as np
-import json
 
 def data_fresh(req):
     context = {"data1": 1,
@@ -21,17 +21,40 @@ def data_fresh(req):
     for i in range(len(response)):
         res = response[i]
         res['workers'] = wk_prices[i]
-    # for i in range(len(response), len(wk_prices)):
-    #     res = {}
-    #     res['workers'] = wk_prices[i]
-    #     response.append(res)
-    # response = JsonResponse(context)
-    return response
+    return JsonResponse(response, safe=False)
+
+# Used in dashboard.js
+def full_data_fresh(req):
+    context = {"data1": 1,
+               "data2": 2}
+    df_spaceships, df_workers = getRawData()
+    wk_prices = get_min_workers(df_workers)
+    response = []
+    for i in range(len(response), len(wk_prices)):
+        res = {}
+        res['category'] = i + 15
+        res['value'] = wk_prices[i]
+        response.append(res)
+
+    return JsonResponse(response, safe=False)
 
 # Create your views here.
-def index (request): 
-    response = data_fresh(request)
+def index(request): 
+    context = {"data1": 1,
+            "data2": 2}
+    df_spaceships, df_workers = getRawData()
+    sp_prices = get_min_spaceships(df_spaceships)
+    wk_prices = get_min_workers(df_workers)
+    response = []
+    for i in sp_prices:
+        res = {}
+        res['spaceships'] = i
+        response.append(res)
+    for i in range(len(response)):
+        res = response[i]
+        res['workers'] = wk_prices[i]
     return render(request, 'main/index.html', {'response':response})
+
 
 def sendReq(gop, url, data, headers):
     furl = url
@@ -62,17 +85,17 @@ def getRawData():
     }
     data = {}
 
-    url_sp = ['https://api.cryptomines.app/api/spaceships?level=1&cursor=0&limit=10000', 
-          'https://api.cryptomines.app/api/spaceships?level=2&cursor=0&limit=10000', 
-          'https://api.cryptomines.app/api/spaceships?level=3&cursor=0&limit=10000', 
-          'https://api.cryptomines.app/api/spaceships?level=4&cursor=0&limit=10000', 
-          'https://api.cryptomines.app/api/spaceships?level=5&cursor=0&limit=10000']
+    url_sp = ['https://api.cryptomines.app/api/spaceships?level=1&page=1&limit=10000&sort=eternal', 
+          'https://api.cryptomines.app/api/spaceships?level=2&page=1&limit=10000&sort=eternal', 
+          'https://api.cryptomines.app/api/spaceships?level=3&page=1&limit=10000&sort=eternal', 
+          'https://api.cryptomines.app/api/spaceships?level=4&page=1&limit=10000&sort=eternal', 
+          'https://api.cryptomines.app/api/spaceships?level=5&page=1&limit=10000&sort=eternal']
 
     res_sp = []
     for url in url_sp:
         response = sendReq('GET', url, data, headers)
         res = response.json()
-        res_sp.extend(res)
+        res_sp.extend(res['data'])
         
     df_spaceships = pd.json_normalize(res_sp)
     df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
@@ -85,17 +108,17 @@ def getRawData():
     }
     data = {}
 
-    url_wk = ['https://api.cryptomines.app/api/workers?level=1&cursor=0&limit=10000',
-         'https://api.cryptomines.app/api/workers?level=2&cursor=0&limit=10000',
-         'https://api.cryptomines.app/api/workers?level=3&cursor=0&limit=10000',
-          'https://api.cryptomines.app/api/workers?level=4&cursor=0&limit=10000',
-          'https://api.cryptomines.app/api/workers?level=5&cursor=0&limit=10000']
+    url_wk = ['https://api.cryptomines.app/api/workers?level=1&page=1&limit=10000&sort=eternal',
+         'https://api.cryptomines.app/api/workers?level=2&page=1&limit=10000&sort=eternal',
+         'https://api.cryptomines.app/api/workers?level=3&page=1&limit=10000&sort=eternal',
+          'https://api.cryptomines.app/api/workers?level=4&page=1&limit=10000&sort=eternal',
+          'https://api.cryptomines.app/api/workers?level=5&page=1&limit=10000&sort=eternal']
     
     res_wk = []
     for url in url_wk:
         response = sendReq('GET', url, data, headers)
         res = response.json()
-        res_wk.extend(res)
+        res_wk.extend(res['data'])
         
     df_workers = pd.json_normalize(res_wk)
     df_workers['price'] = df_workers['price'].astype(float) / 1000000000000000000
