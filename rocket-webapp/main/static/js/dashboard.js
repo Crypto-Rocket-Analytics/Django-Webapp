@@ -39,10 +39,10 @@ am5.ready(async function () {
   xRenderer.labels.template.set("minPosition", 0.01);
   xRenderer.labels.template.set("maxPosition", 0.99);
 
-  xRenderer.labels.template.set({
-    fill: am5.color(0xFFFFFF),
-    fontSize: "1.5em"
-  })
+  // xRenderer.labels.template.set({
+  //   fill: am5.color(0xFFFFFF),
+  //   fontSize: "1.5em"
+  // })
 
   // yRenderer.labels.template.setAll({
   //   fill: am5.color(0xFFFFFF),
@@ -60,9 +60,20 @@ am5.ready(async function () {
 
   var yAxis = chart.yAxes.push(
     am5xy.ValueAxis.new(root, {
-      renderer: am5xy.AxisRendererY.new(root, {}),
+      renderer: am5xy.myTheme.new(root, {}),
     })
   );
+
+  // var myTheme = am5.Theme.new(root);
+
+  // myTheme.rule("AxisLabel").setAll({
+  //   fill: am5.color(0xFFFFFF),
+  //   fontSize: "1.5em"
+  // });
+
+  // root.setThemes([
+  //   myTheme
+  // ]);
 
   // Add series
   // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
