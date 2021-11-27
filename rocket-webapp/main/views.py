@@ -7,9 +7,17 @@ import requests
 import pandas as pd
 import numpy as np
 
+PAGE_VIEW_COUNT = 0
+ADD_BUTTON_CLICK_COUNT = 0
+CALCULATE_BUTTON_CLICK_COUNT = 0
+DATA = []
+
 def data_fresh(req):
     context = {"data1": 1,
                "data2": 2}
+    api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
+    res = requests.get(api).json()
+    etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
     df_spaceships, df_workers = getRawData()
     sp_prices = get_min_spaceships(df_spaceships)
     wk_prices = get_min_workers(df_workers)
@@ -17,6 +25,7 @@ def data_fresh(req):
     for i in sp_prices:
         res = {}
         res['spaceships'] = i
+        res['etlspaceships'] = round(i * etlspaceships, 2)
         response.append(res)
     for i in range(len(response)):
         res = response[i]
@@ -39,9 +48,14 @@ def full_data_fresh(req):
     return JsonResponse(response, safe=False)
 
 # Create your views here.
-def index(request): 
+def index(request):
+    global PAGE_VIEW_COUNT
+    PAGE_VIEW_COUNT += 1
     context = {"data1": 1,
-            "data2": 2}
+               "data2": 2}
+    api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
+    res = requests.get(api).json()
+    etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
     df_spaceships, df_workers = getRawData()
     sp_prices = get_min_spaceships(df_spaceships)
     wk_prices = get_min_workers(df_workers)
@@ -49,6 +63,7 @@ def index(request):
     for i in sp_prices:
         res = {}
         res['spaceships'] = i
+        res['etlspaceships'] = round(i * etlspaceships, 2)
         response.append(res)
     for i in range(len(response)):
         res = response[i]
@@ -162,3 +177,20 @@ def get_min_workers(df_workers):
     df_workers_min = df_workers_min.groupby(['nftData.minePower']).min()
     return list(df_workers_min['price'])
 
+def tracker(req):
+    return JsonResponse({"PAGE_VIEW_COUNT": PAGE_VIEW_COUNT, "ADD_BUTTON_CLICK_COUNT": ADD_BUTTON_CLICK_COUNT, "CALCULATE_BUTTON_CLICK_COUNT": CALCULATE_BUTTON_CLICK_COUNT, "DATA": DATA}, safe=False)
+
+def add_button_click(req):
+    global ADD_BUTTON_CLICK_COUNT
+    ADD_BUTTON_CLICK_COUNT += 1
+    return JsonResponse({"success": True}, safe=False)
+
+def calculate_button_click(req):
+    global CALCULATE_BUTTON_CLICK_COUNT
+    CALCULATE_BUTTON_CLICK_COUNT += 1
+    return JsonResponse({"success": True}, safe=False)
+
+def getTrackerData(request):
+    global DATA
+    DATA.append({"workers": request.GET['workers'], "spaceshipCapacity": request.GET['spaceshipCapacity'],"mp": request.GET['mp'],"rank": request.GET['rank'],"cost": request.GET['cost'], })
+    return JsonResponse({"success": True}, safe=False)

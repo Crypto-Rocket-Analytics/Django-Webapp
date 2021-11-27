@@ -23,4 +23,8 @@ urlpatterns = [
     path('', include('main.urls', namespace='main')),
     path('data_fresh/', views.data_fresh, name="data_fresh"),
     path('full_data_fresh/', views.full_data_fresh, name="full_data_fresh"),
+    path('api/tracker/data/', views.tracker, name="tracker"),
+    path('click/add/', views.add_button_click, name="add_button_click"),
+    path('click/calculate/', views.calculate_button_click, name="calculate_button_click"),
+    path('add/data/fleet/', views.getTrackerData, name="getTrackerData"),
 ]

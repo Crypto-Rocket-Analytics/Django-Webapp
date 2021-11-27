@@ -1,515 +1,1066 @@
-﻿{% load static %}   
+﻿{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href=" {% static 'images/crypto-join.png' %} ">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href=" {% static 'images/crypto-join.png' %} " />
 
     <title>Rocket Analytics</title>
-    
-	<!-- Vendors Style-->
-	<link rel="stylesheet" href=" {% static 'css/vendors_css.css' %} ">
-	  
-	<!-- Style-->  
-	<link rel="stylesheet" href=" {% static 'css/style.css' %} ">
-	<link rel="stylesheet" href=" {% static 'css/skin_color.css' %} ">
-     
+
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href=" {% static 'css/vendors_css.css' %} " />
+
+    <!-- Style-->
+    <link rel="stylesheet" href=" {% static 'css/style.css' %} " />
+    <link rel="stylesheet" href=" {% static 'css/skin_color.css' %} " />
   </head>
 
-<body class="hold-transition dark-skin sidebar-mini theme-warning fixed">
-	
-<div class="wrapper">
-	<div id="loader"></div>
-	
-  <header class="main-header">
-	<div class="d-flex align-items-center logo-box justify-content-start">
-		<a href="#" class="waves-effect waves-light nav-link rounded d-none d-md-inline-block push-btn" data-toggle="push-menu" role="button">
-			<img src=" {% static 'images/svg-icon/collapse.svg' %} " class="img-fluid svg-icon" alt="">
-		</a>
-		<!-- Logo -->
-		<a href=" {% static 'index.html' %} " class="logo">
-		  <div class="logo-lg">
-			  <p style=font-size:20px><b>Rocket Analytics</b></p>
-		  </div>
-		</a>	
-	</div>  
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-	  <div class="app-menu">
-		<ul class="header-megamenu nav">
-			<li class="btn-group nav-item d-md-none">
-				<a href="#" class="waves-effect waves-light nav-link push-btn btn-outline no-border" data-toggle="push-menu" role="button">
-					<img src=" {% static 'images/svg-icon/collapse.svg' %} " class="img-fluid svg-icon" alt="">
-			    </a>
-			</li>				 
-			<li class="btn-group nav-item">
-				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link btn-outline no-border full-screen" title="Full Screen">
-					<img src=" {% static 'images/svg-icon/fullscreen.svg' %} " class="img-fluid svg-icon" alt="">
-			    </a>
-			</li>
-		</ul> 
-	  </div>
-    </nav>
-  </header>
-  
-  <aside class="main-sidebar">
-    <!-- sidebar-->
-    <section class="sidebar position-relative">	
-	  	<div class="multinav">
-		  <div class="multinav-scroll" style="height: 100%;">	
-			  <!-- sidebar menu-->
-			  <ul class="sidebar-menu" data-widget="tree">	
-				<li class="treeview">
-				  <a href=" {% static 'index.html' %} ">
-					<img src=" {% static 'images/svg-icon/sidebar-menu/dashboard.svg' %} " class="svg-icon" alt="">
-					<span>Dashboard</span>
-				  </a>
-				</li>
-			  </ul>
-			  
-			  <div class="sidebar-widgets">	
-				<div class="mx-25 mb-30 pb-20 side-bx bg-primary rounded20">
-					<div class="text-center">
-						<img src=" {% static 'images/crypto-join.png' %} " class="sideimg" alt="">
-						<h3 class="title-bx">Play Now!</h3>
-						<a class="text-white py-10 fs-16 mb-0">
-						Earn more Eternals
-						</a>
-					</div>
-				</div>  
-			  </div>
-		  </div>
-		</div>
-    </section>
-  </aside>
+  <body class="hold-transition dark-skin sidebar-mini theme-warning fixed">
+    <div class="wrapper">
+      <div id="loader"></div>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-	  <div class="container-full">
-		<!-- Main content -->
-		<section class="content">			
-			<div class="row">
-				<div class="col-12">
-					<div class="box">
-					  <div class="box-header with-border">
-						<h4 class="box-title">Rocket Analytics - How to Use</h4>
-						<h6 class="box-subtitle">Learn how to use our platform step by step</h6>
-						<div class="box-controls pull-right">
-							Ethernal: 777.93
-						</div>
-					  </div>
-					  <!-- /.box-header -->
-					  <div class="box-body">
-						  <!-- Nav tabs -->
-						  <div class="vtabs">
-							  <ul class="nav nav-tabs tabs-vertical" role="tablist">
-								  <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#home4" role="tab"><span class="hidden-sm-up"><i class="ion-home"></i></span> <span class="hidden-xs-down">Intro</span> </a> </li>
-								  <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#profile4" role="tab"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">AI Strategy</span></a> </li>
-								  <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#messages4" role="tab"><span class="hidden-sm-up"><i class="ion-email"></i></span> <span class="hidden-xs-down">Data Platform</span></a> </li>
-							  </ul>
-							  <!-- Tab panes -->
-							  <div class="tab-content">
-								  <div class="tab-pane active" id="home4" role="tabpanel">
-									  <div class="p-5">
-										  <h3>Introduction</h3>
-										  <h6>This project is created by Rocket Analysis – a group of crypto and game enthusiasts. 
-											  Feel free to talk with us via the account Rocket007#2872. 
-											  We aim to help more crypto game users make more money🚀 based on data. We have two functions right now.</h6>
-										    <h4>Cryptomines Data platform:</h4>
-											<h6>You can view all latest NFTs prices on the platform. Add the workers and spaceships to the shopping cart. 
-												We help you calculate out ROIs.</h6>
-											<h4>AI Strategy Calculator:</h4>
-											<h6>You just need to input your budget. We will use AI algorithms to help you find the best strategies. 
-												This is just for reference.</h6>
-									  </div>
-								  </div>
-								  <div class="tab-pane" id="profile4" role="tabpanel">
-									  <div class="p-15">
-										  <h3>AI Strategy</h3>
-										  <h6>You just need to input your budget. We will give you the best strategies based on ML algorithm. 
-											  Attention: This is just for reference.</h6>
-									  </div>
-								  </div>
-								  <div class="tab-pane" id="messages4" role="tabpanel">
-									  <div class="p-15">
-										  <h3>Data Platform</h3>
-										  <h6>We provide the latest minimum price of workers and spaceships in the marketplace. 
-											  You can use the data to add the workers and spaceships to the shopping cart. 
-											  We will help you calculate the total cost, minging power, and ROIs.</h6>
-									  </div>
-								  </div>
-							  </div>
-						  </div>
-					  </div>
-					  <!-- /.box-body -->
-					</div>
-					<!-- /.box -->
-				  </div>
-				  <!-- /.col -->
+      <header class="main-header">
+        <div class="d-flex align-items-center logo-box justify-content-start">
+          <a
+            href="#"
+            class="
+              waves-effect waves-light
+              nav-link
+              rounded
+              d-none d-md-inline-block
+              push-btn
+            "
+            data-toggle="push-menu"
+            role="button"
+          >
+            <img
+              src=" {% static 'images/svg-icon/collapse.svg' %} "
+              class="img-fluid svg-icon"
+              alt=""
+            />
+          </a>
+          <!-- Logo -->
+          <a href=" {% static 'index.html' %} " class="logo">
+            <div class="logo-lg">
+              <p style="font-size: 20px"><b>Rocket Analytics</b></p>
+            </div>
+          </a>
+        </div>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <div class="app-menu">
+            <ul class="header-megamenu nav">
+              <li class="btn-group nav-item d-md-none">
+                <a
+                  href="#"
+                  class="
+                    waves-effect waves-light
+                    nav-link
+                    push-btn
+                    btn-outline
+                    no-border
+                  "
+                  data-toggle="push-menu"
+                  role="button"
+                >
+                  <img
+                    src=" {% static 'images/svg-icon/collapse.svg' %} "
+                    class="img-fluid svg-icon"
+                    alt=""
+                  />
+                </a>
+              </li>
+              <li class="btn-group nav-item">
+                <a
+                  href="#"
+                  data-provide="fullscreen"
+                  class="
+                    waves-effect waves-light
+                    nav-link
+                    btn-outline
+                    no-border
+                    full-screen
+                  "
+                  title="Full Screen"
+                >
+                  <img
+                    src=" {% static 'images/svg-icon/fullscreen.svg' %} "
+                    class="img-fluid svg-icon"
+                    alt=""
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
-				<div class="col-12">
-					<div class="box-header with-border">
-						<h4 class="box-title">Tell Us Your Budget and Get Your Fleet Plan:</h4>
-					</div>
-				</div>
+      <aside class="main-sidebar">
+        <!-- sidebar-->
+        <section class="sidebar position-relative">
+          <div class="multinav">
+            <div class="multinav-scroll" style="height: 100%">
+              <!-- sidebar menu-->
+              <ul class="sidebar-menu" data-widget="tree">
+                <li class="treeview">
+                  <a href=" {% static 'index.html' %} ">
+                    <img
+                      src=" {% static 'images/svg-icon/sidebar-menu/dashboard.svg' %} "
+                      class="svg-icon"
+                      alt=""
+                    />
+                    <span>Dashboard</span>
+                  </a>
+                </li>
+              </ul>
 
-				<div class="col-12">
-					<div class="row align-items-center">
-						<div class="col-lg-6 col-12">
-							<div class="box">
-								<div class="box-header with-border">
-									<h4 class="box-title">Cryptomines Optimizer</h4>
-									<h6 class="box-subtitle">Enter your expected investment and we will return you the best strategy!</h6>
-								</div>
-								<div class="box-body">
-								<form novalidate>
-									<div class="form-group">
-										<h5>Your Budget <span class="text-danger">*</span></h5>
-										<div class="input-group"> <span class="input-group-addon">$</span>
-											<input type="number" name="onlyNum" class="form-control" required data-validation-required-message="This field is required"> <span class="input-group-addon">.00</span> 
-										</div>
-									</div>
-									<div class="d-flex justify-content-between pt-5">
-										<button type="button" class="btn btn-success">Optimize</button>
-									</div>
-								</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-12">
-							<div class="box">
-								<div class="box-header with-border">
-									<h4 class="box-title">Optimizer Results</h4>
-								</div>
-								<div class="box-body">
-								<form novalidate>
-									<div class="form-group">
-										<div class="input-group"> <span class="input-group-addon">Workers</span>
-											<input type="number" name="onlyNum" class="form-control" readonly="readonly"> 
-										</div>
-										<br>
-										<div class="input-group"> <span class="input-group-addon">Spaceships</span>
-											<input type="number" name="onlyNum" class="form-control" readonly="readonly"> 
-										</div>
-										<br>
-										<div class="input-group"> <span class="input-group-addon">ROI(%)</span>
-											<input type="number" name="onlyNum" class="form-control" readonly="readonly">
-										</div>
-									</div>
-								</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+              <div class="sidebar-widgets">
+                <div class="mx-25 mb-30 pb-20 side-bx bg-primary rounded20">
+                  <div class="text-center">
+                    <img
+                      src=" {% static 'images/crypto-join.png' %} "
+                      class="sideimg"
+                      alt=""
+                    />
+                    <h3 class="title-bx">Play Now!</h3>
+                    <a class="text-white py-10 fs-16 mb-0">
+                      Earn more Eternals
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
 
-				<div class="col-12">
-					<div class="box-header with-border">
-						<h4 class="box-title">Design Your Own Fleet Based on the Latest Market Price:</h4>
-					</div>
-				</div>
-				
-				<div class="col-xl-4 col-12">
-					<div class="col-12">
-						<div class="box">
-							<div class="box-header">
-								<h4 class="box-title">Spaceships </h4>
-							</div>
-							<div class="box-body pt-0">
-								<div class="table-responsive buy-sall-table">
-									<table class="table table-hover mb-0">
-										<thead>							  	
-											<tr>
-												<th width="25%">Price</th>
-												<th>Capacity</th>
-												<th>Min Price: (ETL)</th>
-											</tr>
-										</thead>
-										<tbody class="js-inner">
-											{% for r in response %}
-											<tr><td>{{forloop.counter}}</td> <td></i> {{forloop.counter}}</td><td><i class="cc BTC fs-14 me-5"></i>{{ r.spaceships }}</td></tr>
-											{% endfor %}
-										</tbody>							
-									</table>
-								</div>
-							</div>
-						</div>
-					  </div>
-					<div class="box">
-						<div class="box-body">
-						  <ul class="nav nav-pills mb-20" role="tablist">
-							<li class="nav-item">
-							  <a class="nav-link active fs-18" data-bs-toggle="tab" href="#market" role="tab">Spaceship</a>
-							</li>
-							<li class="nav-item">
-							  <a class="nav-link fs-18" data-bs-toggle="tab" href="#limit" role="tab">Workers</a>
-							</li>
-						  </ul>
-						  <div class="tab-content">
-							<div class="tab-pane fade active show" id="market">
-							  <form>
-								<div class="input-group mt-15 mb-20">
-									<input type="text" class="form-control" placeholder="1">
-									<span class="input-group-text">Star</span>
-								</div>
-								<div class="input-group mb-20">
-									<input type="text" class="form-control" placeholder="1">
-									<span class="input-group-text">Quantity</span>
-								</div>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div class="container-full">
+          <!-- Main content -->
+          <section class="content">
+            <div class="row">
+              <div class="col-12">
+                <div class="box">
+                  <div class="box-header with-border">
+                    <h4 class="box-title">Rocket Analytics - How to Use</h4>
+                    <h6 class="box-subtitle">
+                      Learn how to use our platform step by step
+                    </h6>
+                    <div class="box-controls pull-right">
+                      <p class="etl-price">777.93</p>
+                      &nbsp;
+                      <p>ETL Price:</p>
+                    </div>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <!-- Nav tabs -->
+                    <div class="vtabs">
+                      <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                        <li class="nav-item">
+                          <a
+                            class="nav-link active"
+                            data-bs-toggle="tab"
+                            href="#home4"
+                            role="tab"
+                            ><span class="hidden-sm-up"
+                              ><i class="ion-home"></i
+                            ></span>
+                            <span class="hidden-xs-down">Intro</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            href="#profile4"
+                            role="tab"
+                            ><span class="hidden-sm-up"
+                              ><i class="ion-person"></i
+                            ></span>
+                            <span class="hidden-xs-down">AI Strategy</span></a
+                          >
+                        </li>
+                        <li class="nav-item">
+                          <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            href="#messages4"
+                            role="tab"
+                            ><span class="hidden-sm-up"
+                              ><i class="ion-email"></i
+                            ></span>
+                            <span class="hidden-xs-down">Data Platform</span></a
+                          >
+                        </li>
+                      </ul>
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="home4" role="tabpanel">
+                          <div class="p-5">
+                            <h3>Introduction</h3>
+                            <h6>
+                              This project is created by Rocket Analysis – a
+                              group of crypto and game enthusiasts. Feel free to
+                              talk with us via the account Rocket007#2872. We
+                              aim to help more crypto game users make more
+                              money🚀 based on data. We have two functions right
+                              now.
+                            </h6>
+                            <h4>Cryptomines Data platform:</h4>
+                            <h6>
+                              You can view all latest NFTs prices on the
+                              platform. Add the workers and spaceships to the
+                              shopping cart. We help you calculate out ROIs.
+                            </h6>
+                            <h4>AI Strategy Calculator:</h4>
+                            <h6>
+                              You just need to input your budget. We will use AI
+                              algorithms to help you find the best strategies.
+                              This is just for reference.
+                            </h6>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="profile4" role="tabpanel">
+                          <div class="p-15">
+                            <h3>AI Strategy</h3>
+                            <h6>
+                              You just need to input your budget. We will give
+                              you the best strategies based on ML algorithm.
+                              Attention: This is just for reference.
+                            </h6>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="messages4" role="tabpanel">
+                          <div class="p-15">
+                            <h3>Data Platform</h3>
+                            <h6>
+                              We provide the latest minimum price of workers and
+                              spaceships in the marketplace. You can use the
+                              data to add the workers and spaceships to the
+                              shopping cart. We will help you calculate the
+                              total cost, minging power, and ROIs.
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+              <!-- /.col -->
 
-								<div class="d-flex justify-content-between pt-5">
-									<button type="button" class="btn btn-danger mt-0">Remove</button>
-									<button type="button" class="btn btn-success">Add</button>
-								</div>
-							  </form>
-							</div>
-							<div class="tab-pane fade" id="limit">
-							  <form>
-								<div class="input-group mt-15 mb-20">
-									<input type="text" class="form-control" placeholder="1">
-									<span class="input-group-text">MP</span>
-								</div>
-								<div class="input-group mb-20">
-									<input type="text" class="form-control" placeholder="1">
-									<span class="input-group-text">Quantity</span>
-								</div>
+              <div class="col-12">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    Tell Us Your Budget and Get Your Fleet Plan:
+                  </h4>
+                </div>
+              </div>
 
-								<div class="d-flex justify-content-between pt-5">
-									<button type="button" class="btn btn-danger mt-0">Remove</button>
-									<button type="button" class="btn btn-success">Add</button>
-								</div>
-							  </form>
-							</div>
-						  </div>
-						</div>
-					</div>
-					<div class="box">
-						<div class="box-header with-border">
-						  <h4 class="box-title">Fleet Info</h4>
-						</div>
-						<div class="box-body">
-							<div class="d-flex justify-content-between bb-1 pb-5">
-								<h5 class="text-fade">Category</h5>
-								<h5 class="text-fade">Count</h5>
-							</div>
-							<div class="d-flex justify-content-between pb-5 pt-10">
-								<h4>Total Workers</h4>
-								<h4>11/11</h4>
-							</div>
-							<div class="d-flex justify-content-between pb-10">
-								<h4>Total MP</h4>
-								<h4>1000</h4>
-							</div>
-							<div class="d-flex justify-content-between pb-10">
-								<h4>Fleet Rank</h4>
-								<h4>A</h4>
-							</div>
-							<div class="d-flex justify-content-between pb-10">
-								<h4>Total Cost</h4>
-								<h4>$ 300</h4>
-							</div>
-							<div class="d-flex justify-content-between pb-10">
-								<h4>7 Day ROI (%)</h4>
-								<h4>3</h4>
-							</div>
-							<div class="d-flex justify-content-between pb-10">
-								<h4>15 Day ROI (%)</h4>
-								<h4>5</h4>
-							</div>
-						</div>
-					</div>		
-				</div>
-				<div class="col-xl-8 col-12">
-					<div class="box">
-						<div class="box-header with-border">
-						  <h4 class="box-title">Workers</h4>
-						</div>
-						<div class="box-body">
-							<div id="chartdiv" class="h-400"></div>
-						</div>
-					</div>
-					<div class="box">
-						<div class="box-header with-border">
-						  <h4 class="box-title">Your Current Fleet</h4>
-						</div>
-						<div class="box-body">
-							<div class="container">
-								<div class="row row-cols-2">
-								  <div class="col">Total Workers: 5</div>
-								  <div class="col">Total MP: 1000</div>
-								  <div class="col">Fleet Rank: A</div>
-								  <div class="col">Total Cost: $500</div>
-								</div>
-							  </div>
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="table table-striped table-hover">
-										<table class="table no-margin min-pad-table" style="width: 100%">
-											<colgroup>
-												<col span="1" style="width: 30%;">
-												<col span="1" style="width: 30%;">
-												<col span="1" style="width: 40%;">
-											</colgroup>
-											<thead>
-												<tr>
-													<th>Spaceship Star</th>
-													<th>Price</th>
-													<th>Quantity</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-												<td>1</td>
-												<td>17800.00</td>
-												<td>2</td>
-												</tr>
-												<tr>
-												<td>2</td>
-												<td>13950.00</td>
-												<td>2</td>
-												</tr>
-												<tr>
-												<td>3</td>
-												<td>19555.22</td>
-												<td>2</td>
-												</tr>
-												<tr>
-												<td>4</td>
-												<td>19555.22</td>
-												<td>2</td>
-												</tr>
-												<tr>
-												<td>5</td>
-												<td>19555.22</td>
-												<td>2</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								<div class="col-xs-6">
-								<div class="table-responsive table-striped table-hover" style="width: 100%">
-									<table class="table no-margin min-pad-table">
-										<colgroup>
-											<col span="1" style="width: 30%;">
-											<col span="1" style="width: 30%;">
-											<col span="1" style="width: 40%;">
-										 </colgroup>
-										<thead>
-											<tr>
-												<th>Worker MP</th>
-												<th>Price</th>
-												<th>Quantity</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-											<td>1</td>
-											<td>17800.00</td>
-											<td>2</td>
-											</tr>
-											<tr>
-											<td>2</td>
-											<td>13950.00</td>
-											<td>2</td>
-											</tr>
-											<tr>
-											<td>3</td>
-											<td>19555.22</td>
-											<td>2</td>
-											</tr>
-											<tr>
-											<td>4</td>
-											<td>19555.22</td>
-											<td>2</td>
-											</tr>
-											<tr>
-											<td>5</td>
-											<td>19555.22</td>
-											<td>2</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								</div>
-							</div>
-							<div class="d-flex justify-content-between pt-5">
-								<button type="button" class="btn btn-danger mt-0">Clear</button>
-								<button type="button" class="btn btn-success mt-0">Calculate</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /.content -->
-	  </div>
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-	  &copy; 2021 <a href="#">Rocket Analytics</a>. All Rights Reserved.
-  </footer>
+              <div class="col-12">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-12">
+                    <div class="box">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">Cryptomines Optimizer</h4>
+                        <h6 class="box-subtitle">
+                          Enter your expected investment and we will return you
+                          the best strategy!
+                        </h6>
+                      </div>
+                      <div class="box-body">
+                        <form novalidate>
+                          <div class="form-group">
+                            <h5>
+                              Your Budget <span class="text-danger">*</span>
+                            </h5>
+                            <div class="input-group">
+                              <span class="input-group-addon">$</span>
+                              <input
+                                type="number"
+                                name="onlyNum"
+                                class="form-control"
+                                required
+                                data-validation-required-message="This field is required"
+                              />
+                              <span class="input-group-addon">.00</span>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-between pt-5">
+                            <button type="button" class="btn btn-success">
+                              Optimize
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-12">
+                    <div class="box">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">Optimizer Results</h4>
+                      </div>
+                      <div class="box-body">
+                        <form novalidate>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">Workers</span>
+                              <input
+                                type="number"
+                                name="onlyNum"
+                                class="form-control"
+                                readonly="readonly"
+                              />
+                            </div>
+                            <br />
+                            <div class="input-group">
+                              <span class="input-group-addon">Spaceships</span>
+                              <input
+                                type="number"
+                                name="onlyNum"
+                                class="form-control"
+                                readonly="readonly"
+                              />
+                            </div>
+                            <br />
+                            <div class="input-group">
+                              <span class="input-group-addon">ROI(%)</span>
+                              <input
+                                type="number"
+                                name="onlyNum"
+                                class="form-control"
+                                readonly="readonly"
+                              />
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar">
-	  
-	<div class="rpanel-title">
-		<span class="pull-right btn btn-circle p-10">
-			<img src=" {% static 'images/svg-icon/close.svg' %} " data-toggle="control-sidebar" class="img-fluid svg-icon" alt="">
-		</span> 
-	</div>  <!-- Create the tabs -->
-    <ul class="nav nav-tabs control-sidebar-tabs">
-      <li class="nav-item"><a href=" {% static '#control-sidebar-home-tab' %} " data-bs-toggle="tab" class="active"><img src=" {% static 'images/svg-icon/apps.svg' %} " class="img-fluid svg-icon" alt=""></a></li>
-      <li class="nav-item"><a href=" {% static '#control-sidebar-settings-tab' %} " data-bs-toggle="tab"><img src=" {% static 'images/svg-icon/advanced.svg' %} " class="img-fluid svg-icon" alt=""></a></li>
-    </ul>
-  </aside>
-  <!-- /.control-sidebar -->
-  
-  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-  
-</div>
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- ./wrapper -->	
-	
-	<!-- Vendor JS -->
-	<script>
-    $(document).ready(function(){
-        function refresh(){
-            $.getJSON("/data_fresh/", function (ret) {
-				var jsInnerHTML = '';
-				for(var i = 0; i < ret.length; i++) {
-    				var r = ret[i];
-					jsInnerHTML += `<tr><td>${i+1}</td> <td></i> ${i+1}</td><td><i class="cc BTC fs-14 me-5"></i>${ r.spaceships }</td></tr>`;
-				}
-				document.getElementsByClassName("js-inner")[0].innerHTML = jsInnerHTML;
-            })
+              <div class="col-12">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    Design Your Own Fleet Based on the Latest Market Price:
+                  </h4>
+                </div>
+              </div>
+
+              <div class="col-xl-4 col-12">
+                <div class="col-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h4 class="box-title">Spaceships Real-time Price</h4>
+                    </div>
+                    <div class="box-body pt-0">
+                      <div class="table-responsive buy-sall-table">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th width="25%">Star</th>
+                              <th>Min Price: (ETL)</th>
+                              <th>Min Price: (USD)</th>
+                            </tr>
+                          </thead>
+                          <tbody class="js-inner">
+                            {% for r in response %}
+                            <tr>
+                              <td>{{forloop.counter}}</td>
+                              <td>{{ r.spaceships }}</td>
+                              <td class="data-price-usd">
+                                {{ r.etlspaceships }}
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="box">
+                  <div class="box-body">
+                    <ul class="nav nav-pills mb-20" role="tablist">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active fs-18"
+                          data-bs-toggle="tab"
+                          href="#market"
+                          role="tab"
+                          >Spaceship</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link fs-18"
+                          data-bs-toggle="tab"
+                          href="#limit"
+                          role="tab"
+                          >Workers</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane fade active show" id="market">
+                        <form>
+                          <div class="input-group mt-15 mb-20">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="star-sec-one"
+                              placeholder="1"
+                            />
+                            <span class="input-group-text">Star</span>
+                          </div>
+                          <div class="input-group mb-20">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="quantity-sec-one"
+                              placeholder="1"
+                            />
+                            <span class="input-group-text">Quantity</span>
+                          </div>
+
+                          <div class="d-flex justify-content-between pt-5">
+                            <button
+                              type="button"
+                              class="btn btn-danger mt-0"
+                              onclick="resetHandlerOne()"
+                            >
+                              Reset
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-success"
+                              onclick="inputHandlerOne()"
+                            >
+                              Add
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="tab-pane fade" id="limit">
+                        <form>
+                          <div class="input-group mt-15 mb-20">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="mp-sec-two"
+                              placeholder="1"
+                            />
+                            <span class="input-group-text">MP</span>
+                          </div>
+                          <div class="input-group mb-20">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="quantity-sec-two"
+                              placeholder="1"
+                            />
+                            <span class="input-group-text">Quantity</span>
+                          </div>
+
+                          <div class="d-flex justify-content-between pt-5">
+                            <button
+                              type="button"
+                              class="btn btn-danger mt-0"
+                              onclick="resetHandlerTwo()"
+                            >
+                              Reset
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-success"
+                              onclick="inputHandlerTwo()"
+                            >
+                              Add
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="box">
+                  <div class="box-header with-border">
+                    <h4 class="box-title">Rewards Calculator</h4>
+                  </div>
+                  <div class="box-body">
+                    <div class="d-flex justify-content-between bb-1 pb-5">
+                      <h5 class="text-fade">Category</h5>
+                      <h5 class="text-fade">Count ($)</h5>
+                    </div>
+                    <div class="d-flex justify-content-between pb-5 pt-10">
+                      <h4>7 Day Rewards</h4>
+                      <h4 id="seven-roi"></h4>
+                    </div>
+                    <div class="d-flex justify-content-between pb-10">
+                      <h4>15 Day Rewards</h4>
+                      <h4 id="fifteen-roi"></h4>
+                    </div>
+                    <div class="d-flex justify-content-between pb-10">
+                      <h4>30 Day Rewards</h4>
+                      <h4 id="thirty-roi"></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-12">
+                <div class="box">
+                  <div
+                    class="box-header with-border"
+                    style="display: flex; justify-content: space-between"
+                  >
+                    <h4 class="box-title">Workers</h4>
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        width: 112px;
+                      "
+                    >
+                      ETL
+                      <label class="switch">
+                        <input
+                          id="toggler"
+                          onclick="toggle()"
+                          type="checkbox"
+                        />
+                        <span class="slider round"></span>
+                      </label>
+                      USD
+                    </div>
+                  </div>
+                  <div class="box-body">
+                    <div id="chartdiv" class="h-400"></div>
+                    <div id="chartdiv-2" class="h-400 hidden"></div>
+                  </div>
+                </div>
+                <div class="box">
+                  <div class="box-header with-border">
+                    <h4 class="box-title">Fleet Shopping Cart</h4>
+                  </div>
+                  <div class="box-body">
+                    <div class="container">
+                      <div class="row row-cols-2">
+                        <div class="col" style="display: flex">
+                          Total Workers / Spaceship Capacity:&nbsp;
+                          <p id="instant-workers"></p>
+                          &nbsp;/&nbsp;
+                          <p id="instant-capacity"></p>
+                        </div>
+                        <div class="col" style="display: flex">
+                          Total MP:&nbsp;
+                          <p id="instant-mp"></p>
+                        </div>
+                        <div class="col" style="display: flex">
+                          Fleet Rank:&nbsp;
+                          <p id="instant-rank"></p>
+                        </div>
+                        <div class="col" style="display: flex">
+                          Total Cost:&nbsp;
+                          <p id="instant-cost"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <div class="table table-striped table-hover">
+                          <table
+                            class="table no-margin min-pad-table"
+                            style="width: 100%"
+                          >
+                            <colgroup>
+                              <col span="1" style="width: 30%" />
+                              <col span="1" style="width: 30%" />
+                              <col span="1" style="width: 40%" />
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th>Spaceship Star</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                              </tr>
+                            </thead>
+                            <tbody id="sec-one"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div
+                          class="
+                            table-responsive table-striped table-hover
+                            fixTableHead
+                          "
+                          style="width: 100%; margin-bottom: 10px"
+                        >
+                          <table class="table no-margin min-pad-table">
+                            <colgroup>
+                              <col span="1" style="width: 30%" />
+                              <col span="1" style="width: 30%" />
+                              <col span="1" style="width: 40%" />
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th>Worker MP</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                              </tr>
+                            </thead>
+                            <tbody id="sec-two"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between pt-5">
+                      <button
+                        type="button"
+                        class="btn btn-danger mt-0"
+                        onclick="clearAll()"
+                      >
+                        Clear
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-success mt-0"
+                        onclick="calculate()"
+                      >
+                        Calculate
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- /.content -->
+        </div>
+      </div>
+      <!-- /.content-wrapper -->
+      <footer class="main-footer">
+        &copy; 2021 <a href="#">Rocket Analytics</a>. All Rights Reserved.
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar">
+        <div class="rpanel-title">
+          <span class="pull-right btn btn-circle p-10">
+            <img
+              src=" {% static 'images/svg-icon/close.svg' %} "
+              data-toggle="control-sidebar"
+              class="img-fluid svg-icon"
+              alt=""
+            />
+          </span>
+        </div>
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs control-sidebar-tabs">
+          <li class="nav-item">
+            <a
+              href=" {% static '#control-sidebar-home-tab' %} "
+              data-bs-toggle="tab"
+              class="active"
+              ><img
+                src=" {% static 'images/svg-icon/apps.svg' %} "
+                class="img-fluid svg-icon"
+                alt=""
+            /></a>
+          </li>
+          <li class="nav-item">
+            <a
+              href=" {% static '#control-sidebar-settings-tab' %} "
+              data-bs-toggle="tab"
+              ><img
+                src=" {% static 'images/svg-icon/advanced.svg' %} "
+                class="img-fluid svg-icon"
+                alt=""
+            /></a>
+          </li>
+        </ul>
+      </aside>
+      <!-- /.control-sidebar -->
+
+      <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- ./wrapper -->
+
+    <!-- Vendor JS -->
+    <script>
+      $(document).ready(function () {
+        function refresh() {
+          $.getJSON("/data_fresh/", function (ret) {
+            var jsInnerHTML = "";
+            for (var i = 0; i < ret.length; i++) {
+              var r = ret[i];
+              jsInnerHTML += `<tr><td>${i + 1}</td> <td> ${
+                r.spaceships
+              }</td><td class="data-price-usd">${r.etlspaceships}</td></tr>`;
+            }
+            document.getElementsByClassName("js-inner")[0].innerHTML =
+              jsInnerHTML;
+          });
         }
-        setInterval(refresh, 3000)
-    })
-</script>
+        setInterval(refresh, 3000);
+      });
+    </script>
+    <script>
+      var data;
+      var etlPrice;
+      var secOneInputs = [];
+      var secTwoInputs = [];
+      var fleetInfo = {};
+      const successRate = [
+        { D: 85 / 100, C: 88 / 100, B: 91 / 100, A: 93 / 100, S: 97 / 100 },
+        { D: 83 / 100, C: 86 / 100, B: 89 / 100, A: 91 / 100, S: 95 / 100 },
+        { D: 81 / 100, C: 84 / 100, B: 87 / 100, A: 89 / 100, S: 93 / 100 },
+        { D: 79 / 100, C: 82 / 100, B: 85 / 100, A: 87 / 100, S: 91 / 100 },
+        { D: 77 / 100, C: 80 / 100, B: 83 / 100, A: 85 / 100, S: 89 / 100 },
+        { D: 75 / 100, C: 78 / 100, B: 81 / 100, A: 83 / 100, S: 87 / 100 },
+        { D: 73 / 100, C: 76 / 100, B: 79 / 100, A: 81 / 100, S: 85 / 100 },
+        { D: 71 / 100, C: 74 / 100, B: 77 / 100, A: 79 / 100, S: 83 / 100 },
+        { D: 69 / 100, C: 72 / 100, B: 75 / 100, A: 77 / 100, S: 81 / 100 },
+        { D: 67 / 100, C: 70 / 100, B: 73 / 100, A: 75 / 100, S: 79 / 100 },
+        { D: 60 / 100, C: 65 / 100, B: 67 / 100, A: 71 / 100, S: 74 / 100 },
+        { D: 58 / 100, C: 63 / 100, B: 65 / 100, A: 69 / 100, S: 72 / 100 },
+        { D: 56 / 100, C: 61 / 100, B: 63 / 100, A: 67 / 100, S: 70 / 100 },
+        { D: 54 / 100, C: 59 / 100, B: 61 / 100, A: 65 / 100, S: 68 / 100 },
+        { D: 52 / 100, C: 57 / 100, B: 59 / 100, A: 63 / 100, S: 66 / 100 },
+        { D: 50 / 100, C: 55 / 100, B: 57 / 100, A: 61 / 100, S: 64 / 100 },
+        { D: 48 / 100, C: 53 / 100, B: 55 / 100, A: 59 / 100, S: 62 / 100 },
+        { D: 46 / 100, C: 51 / 100, B: 53 / 100, A: 57 / 100, S: 60 / 100 },
+        { D: 44 / 100, C: 49 / 100, B: 51 / 100, A: 55 / 100, S: 58 / 100 },
+        { D: 42 / 100, C: 47 / 100, B: 49 / 100, A: 53 / 100, S: 56 / 100 },
+        { D: 41 / 100, C: 43 / 100, B: 47 / 100, A: 52 / 100, S: 55 / 100 },
+        { D: 41 / 100, C: 43 / 100, B: 47 / 100, A: 52 / 100, S: 55 / 100 },
+        { D: 41 / 100, C: 43 / 100, B: 47 / 100, A: 52 / 100, S: 55 / 100 },
+        { D: 41 / 100, C: 43 / 100, B: 47 / 100, A: 52 / 100, S: 55 / 100 },
+        { D: 41 / 100, C: 43 / 100, B: 47 / 100, A: 52 / 100, S: 55 / 100 },
+        { D: 39 / 100, C: 40 / 100, B: 45 / 100, A: 50 / 100, S: 53 / 100 },
+        { D: 39 / 100, C: 40 / 100, B: 45 / 100, A: 50 / 100, S: 53 / 100 },
+        { D: 39 / 100, C: 40 / 100, B: 45 / 100, A: 50 / 100, S: 53 / 100 },
+        { D: 39 / 100, C: 40 / 100, B: 45 / 100, A: 50 / 100, S: 53 / 100 },
+        { D: 39 / 100, C: 40 / 100, B: 45 / 100, A: 50 / 100, S: 53 / 100 },
+      ];
+      const complexTable = [
+        { mineReward: 4.0, fuelCost: 0.21 },
+        { mineReward: 8.08, fuelCost: 0.43 },
+        { mineReward: 12.31, fuelCost: 0.66 },
+        { mineReward: 16.7, fuelCost: 0.9 },
+        { mineReward: 21.26, fuelCost: 1.14 },
+        { mineReward: 26.06, fuelCost: 1.4 },
+        { mineReward: 31.02, fuelCost: 1.67 },
+        { mineReward: 36.13, fuelCost: 1.95 },
+        { mineReward: 41.49, fuelCost: 2.24 },
+        { mineReward: 47.0, fuelCost: 2.54 },
+        { mineReward: 57.72, fuelCost: 3.11 },
+        { mineReward: 64.83, fuelCost: 3.5 },
+        { mineReward: 72.34, fuelCost: 3.9 },
+        { mineReward: 80.33, fuelCost: 4.34 },
+        { mineReward: 88.65, fuelCost: 4.79 },
+        { mineReward: 97.36, fuelCost: 5.26 },
+        { mineReward: 106.64, fuelCost: 5.76 },
+        { mineReward: 116.3, fuelCost: 6.28 },
+        { mineReward: 126.46, fuelCost: 6.83 },
+        { mineReward: 137.17, fuelCost: 7.41 },
+        { mineReward: 183.45, fuelCost: 9.5 },
+        { mineReward: 199.76, fuelCost: 10.0 },
+        { mineReward: 216.06, fuelCost: 10.5 },
+        { mineReward: 236.45, fuelCost: 11.0 },
+        { mineReward: 256.6, fuelCost: 14.0 },
+        { mineReward: 277.22, fuelCost: 15.0 },
+        { mineReward: 297.6, fuelCost: 16.0 },
+        { mineReward: 321.34, fuelCost: 17.5 },
+        { mineReward: 346.12, fuelCost: 19.0 },
+        { mineReward: 375.06, fuelCost: 21.0 },
+      ];
+      async function etlPriceFetcher() {
+        const rawPrice = await $.getJSON(
+          "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D",
+          function (ret) {
+            return ret;
+          }
+        );
+        etlPrice = parseFloat(
+          rawPrice.data.points[
+            Object.keys(rawPrice.data.points).pop()
+          ].v[0].toFixed(2)
+        );
+        document.getElementsByClassName("etl-price")[0].innerHTML = etlPrice;
+      }
+      etlPriceFetcher();
+      function toggle() {
+        if (document.getElementById("toggler").checked) {
+          document.getElementById("chartdiv-2").classList.remove("hidden");
+          document.getElementById("chartdiv").classList.add("hidden");
+        } else {
+          document.getElementById("chartdiv").classList.remove("hidden");
+          document.getElementById("chartdiv-2").classList.add("hidden");
+        }
+      }
+      toggle();
+      function instantCalculate() {
+        var workers = 0;
+        var mp = 0;
+        var rank;
+        var cost = 0;
+        var tmp = [];
+        var spaceshipCapacity = 0;
+        for (var i = 0; i < secOneInputs.length; i++) {
+          spaceshipCapacity += secOneInputs[i].star * secOneInputs[i].quantity;
+        }
+        for (var i = 0; i < secTwoInputs.length; i++) {
+          workers += secTwoInputs[i].quantity;
+        }
+        for (var i = 0; i < secTwoInputs.length; i++) {
+          mp += secTwoInputs[i].mp;
+        }
+        for (var i = 0; i < secOneInputs.length; i++) {
+          tmp.push(secOneInputs[i].quantity);
+        }
+        tmp = Math.max.apply(0, tmp);
+        for (var i = 0; i < secOneInputs.length; i++) {
+          if (secOneInputs[i].quantity === tmp) {
+            if (secOneInputs[i].star === 1) {
+              rank = "D";
+            } else if (secOneInputs[i].star === 2) {
+              rank = "C";
+            } else if (secOneInputs[i].star === 3) {
+              rank = "B";
+            } else if (secOneInputs[i].star === 4) {
+              rank = "A";
+            } else if (secOneInputs[i].star === 5) {
+              rank = "S";
+            }
+          }
+        }
+        for (var i = 0; i < secTwoInputs.length; i++) {
+          cost += secTwoInputs[i].price;
+        }
+        for (var i = 0; i < secOneInputs.length; i++) {
+          cost += secOneInputs[i].price;
+        }
+        cost = parseFloat(cost.toFixed(2));
+        document.getElementById("instant-workers").innerHTML = workers;
+        document.getElementById("instant-mp").innerHTML = mp;
+        document.getElementById("instant-rank").innerHTML = rank;
+        document.getElementById("instant-cost").innerHTML = "$" + cost;
+        document.getElementById("instant-capacity").innerHTML =
+          spaceshipCapacity;
+        fleetInfo = { workers, spaceshipCapacity, mp, rank, cost };
+      }
+      function inputHandlerOne() {
+        $.getJSON("/click/add");
+        for (var i = 0; i < secOneInputs.length; i++) {
+          if (
+            secOneInputs[i].star ===
+            parseInt(document.getElementById("star-sec-one").value)
+          ) {
+            secOneInputs[i].quantity += parseInt(
+              document.getElementById("quantity-sec-one").value || 0
+            );
+            document.getElementById("star-sec-one").value = "";
+            document.getElementById("quantity-sec-one").value = "";
+            updateSecOne(secOneInputs);
+            return;
+          }
+        }
+        secOneInputs.unshift({
+          star: parseInt(document.getElementById("star-sec-one").value) || 0,
+          quantity:
+            parseInt(document.getElementById("quantity-sec-one").value) || 0,
+        });
+        document.getElementById("star-sec-one").value = "";
+        document.getElementById("quantity-sec-one").value = "";
+        updateSecOne(secOneInputs);
+      }
+      function inputHandlerTwo() {
+        $.getJSON("/click/add");
+        for (var i = 0; i < secTwoInputs.length; i++) {
+          if (
+            secTwoInputs[i].mp ===
+            parseInt(document.getElementById("mp-sec-two").value)
+          ) {
+            secTwoInputs[i].quantity += parseInt(
+              document.getElementById("quantity-sec-two").value || 0
+            );
+            document.getElementById("mp-sec-two").value = "";
+            document.getElementById("quantity-sec-two").value = "";
+            updateSecTwo(secTwoInputs);
+            return;
+          }
+        }
+        secTwoInputs.unshift({
+          mp: parseInt(document.getElementById("mp-sec-two").value) || 0,
+          quantity:
+            parseInt(document.getElementById("quantity-sec-two").value) || 0,
+        });
+        document.getElementById("mp-sec-two").value = "";
+        document.getElementById("quantity-sec-two").value = "";
+        updateSecTwo(secTwoInputs);
+      }
+      function resetHandlerTwo() {
+        secTwoInputs = [];
+        updateSecTwo(secTwoInputs);
+      }
+      function resetHandlerOne() {
+        secOneInputs = [];
+        updateSecOne(secOneInputs);
+      }
+      function clearAll() {
+        resetHandlerTwo();
+        resetHandlerOne();
+      }
+      function updateSecOne(data) {
+        var htmlData = "";
+        for (var i = 0; i < data.length; i++) {
+          try {
+            if (!data[i].price) {
+              data[i].price = parseFloat(
+                document.getElementsByClassName("data-price-usd")[
+                  data[i].star - 1
+                ].innerHTML
+              );
+            }
+            var row = data[i];
+            htmlData += `<tr>
+      	<td>${row.star}</td>
+      	<td>${row.price}</td>
+      	<td>${row.quantity}</td>
+      </tr>`;
+          } catch {
+            secOneInputs = data.slice(1);
+          }
+        }
+        instantCalculate();
+        document.getElementById("sec-one").innerHTML = htmlData;
+      }
+      function updateSecTwo(data2) {
+        var htmlData = "";
+        for (var i = 0; i < data2.length; i++) {
+          try {
+            if (!data2[i].price) {
+              data2[i].price = parseFloat(
+                (data[data2[i].mp - 15].value * etlPrice).toFixed(2)
+              );
+            }
+            var row = data2[i];
+            htmlData += `<tr>
+      	<td>${row.mp}</td>
+      	<td>${row.price}</td>
+      	<td>${row.quantity}</td>
+      </tr>`;
+          } catch {
+            secTwoInputs = data2.slice(1);
+          }
+        }
+        instantCalculate();
+        document.getElementById("sec-two").innerHTML = htmlData;
+      }
+      function calculate() {
+        $.getJSON("/click/calculate");
+        $.get("/add/data/fleet/", fleetInfo);
+        var sevenRoi, fifteenRoi, thirtyRoi;
+        var workers = fleetInfo.workers;
+        var rank = fleetInfo.rank;
+        var mp = fleetInfo.mp;
+        var cost = fleetInfo.cost;
+        if (mp > 100 && mp < 12750) {
+          if (mp <= 3000) {
+            sevenRoi =
+              complexTable[parseInt(mp / 100) - 1].mineReward *
+                7 *
+                successRate[parseInt(mp / 100) - 1][rank] -
+              complexTable[parseInt(mp / 100) - 1].fuelCost * 7 -
+              workers * 7;
+            fifteenRoi =
+              complexTable[parseInt(mp / 100) - 1].mineReward *
+                15 *
+                successRate[parseInt(mp / 100) - 1][rank] -
+              complexTable[parseInt(mp / 100) - 1].fuelCost * 15 -
+              workers * 7 * 0.93;
+            thirtyRoi =
+              complexTable[parseInt(mp / 100) - 1].mineReward *
+                30 *
+                successRate[parseInt(mp / 100) - 1][rank] -
+              complexTable[parseInt(mp / 100) - 1].fuelCost * 30 -
+              workers * 30 * 0.9;
+          } else {
+            if (successRate[29][rank] + (mp - 3000) / 50 > 91) {
+              sevenRoi =
+                complexTable[parseInt(mp / 100) - 1].mineReward * 7 * 91 -
+                complexTable[parseInt(mp / 100) - 1].fuelCost * 7 -
+                workers * 7;
+              fifteenRoi =
+                complexTable[parseInt(mp / 100) - 1].mineReward * 15 * 91 -
+                complexTable[parseInt(mp / 100) - 1].fuelCost * 15 -
+                workers * 7 * 0.93;
+              thirtyRoi =
+                complexTable[parseInt(mp / 100) - 1].mineReward * 30 * 91 -
+                complexTable[parseInt(mp / 100) - 1].fuelCost * 30 -
+                workers * 30 * 0.9;
+            } else {
+              sevenRoi =
+                complexTable[parseInt(mp / 100) - 1].mineReward *
+                  7 *
+                  successRate[29][rank] +
+                (mp - 3000) / 50 -
+                complexTable[parseInt(mp / 100) - 1].fuelCost * 7 -
+                workers * 7;
+              fifteenRoi =
+                complexTable[parseInt(mp / 100) - 1].mineReward *
+                  15 *
+                  successRate[29][rank] +
+                (mp - 3000) / 50 -
+                complexTable[parseInt(mp / 100) - 1].fuelCost * 15 -
+                workers * 7 * 0.93;
+              thirtyRoi =
+                complexTable[parseInt(mp / 100) - 1].mineReward *
+                  30 *
+                  successRate[29][rank] +
+                (mp - 3000) / 50 -
+                complexTable[parseInt(mp / 100) - 1].fuelCost * 30 -
+                workers * 30 * 0.9;
+            }
+          }
+        }
+        sevenRoi = parseFloat(sevenRoi.toFixed(2));
+        fifteenRoi = parseFloat(fifteenRoi.toFixed(2));
+        thirtyRoi = parseFloat(thirtyRoi.toFixed(2));
+        document.getElementById("seven-roi").innerHTML = sevenRoi;
+        document.getElementById("fifteen-roi").innerHTML = fifteenRoi;
+        document.getElementById("thirty-roi").innerHTML = thirtyRoi;
+      }
+    </script>
 
-	<script src=" {% static 'js/vendors.min.js' %} "></script>
-	<script src=" {% static 'js/pages/chat-popup.js' %} "></script>
+    <script src=" {% static 'js/vendors.min.js' %} "></script>
+    <script src=" {% static 'js/pages/chat-popup.js' %} "></script>
     <script src=" {% static 'assets/icons/feather-icons/feather.min.js' %} "></script>
-	
-	<script src=" {% static 'assets/vendor_components/apexcharts-bundle/irregular-data-series.js' %} "></script>
-	<script src=" {% static 'assets/vendor_components/apexcharts-bundle/dist/apexcharts.js' %} "></script>	
-	<script src=" {% static 'assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js' %} "></script>	
+
+    <script src=" {% static 'assets/vendor_components/apexcharts-bundle/irregular-data-series.js' %} "></script>
+    <script src=" {% static 'assets/vendor_components/apexcharts-bundle/dist/apexcharts.js' %} "></script>
+    <script src=" {% static 'assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js' %} "></script>
     <script src=" {% static 'assets/vendor_components/datatable/datatables.min.js' %} "></script>
-	<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-	
-	<!-- Crypto Tokenizer Admin App -->
-	<script src=" {% static 'js/template.js' %} "></script>
-	<script src=" {% static 'js/dashboard.js' %} "></script>
 
-</body>
+    <!-- Crypto Tokenizer Admin App -->
+    <script src=" {% static 'js/template.js' %} "></script>
+    <script src=" {% static 'js/dashboard.js' %} "></script>
+  </body>
 </html>
