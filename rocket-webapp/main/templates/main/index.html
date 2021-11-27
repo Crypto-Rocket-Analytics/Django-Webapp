@@ -544,7 +544,7 @@
                       USD
                     </div>
                   </div>
-                  <div class="box-body">
+                  <div class="box-body" style="padding: 0 25px 0 0">
                     <div id="chartdiv" class="h-400"></div>
                     <div id="chartdiv-2" class="h-400 hidden"></div>
                   </div>
@@ -715,7 +715,7 @@
               jsInnerHTML;
           });
         }
-        setInterval(refresh, 3000);
+        setInterval(refresh, 10000);
       });
     </script>
     <script>
@@ -802,7 +802,14 @@
         );
         document.getElementsByClassName("etl-price")[0].innerHTML = etlPrice;
       }
+      async function dataGrabber() {
+        data = await $.getJSON("/full_data_fresh/", function (ret) {
+          return ret;
+        });
+      }
+      setInterval(dataGrabber, 10000);
       etlPriceFetcher();
+      setInterval(etlPriceFetcher, 10000);
       function toggle() {
         if (document.getElementById("toggler").checked) {
           document.getElementById("chartdiv-2").classList.remove("hidden");
@@ -819,6 +826,7 @@
         var rank;
         var cost = 0;
         var tmp = [];
+        var tmp2 = [];
         var spaceshipCapacity = 0;
         for (var i = 0; i < secOneInputs.length; i++) {
           spaceshipCapacity += secOneInputs[i].star * secOneInputs[i].quantity;
@@ -827,7 +835,7 @@
           workers += secTwoInputs[i].quantity;
         }
         for (var i = 0; i < secTwoInputs.length; i++) {
-          mp += secTwoInputs[i].mp;
+          mp += secTwoInputs[i].mp * secTwoInputs[i].quantity;
         }
         for (var i = 0; i < secOneInputs.length; i++) {
           tmp.push(secOneInputs[i].quantity);
@@ -835,24 +843,26 @@
         tmp = Math.max.apply(0, tmp);
         for (var i = 0; i < secOneInputs.length; i++) {
           if (secOneInputs[i].quantity === tmp) {
-            if (secOneInputs[i].star === 1) {
-              rank = "D";
-            } else if (secOneInputs[i].star === 2) {
-              rank = "C";
-            } else if (secOneInputs[i].star === 3) {
-              rank = "B";
-            } else if (secOneInputs[i].star === 4) {
-              rank = "A";
-            } else if (secOneInputs[i].star === 5) {
-              rank = "S";
-            }
+            tmp2.push(secOneInputs[i].star);
           }
         }
+        tmp2 = Math.min.apply(0, tmp2);
+        if (tmp2 === 1) {
+          rank = "D";
+        } else if (tmp2 === 2) {
+          rank = "C";
+        } else if (tmp2 === 3) {
+          rank = "B";
+        } else if (tmp2 === 4) {
+          rank = "A";
+        } else if (tmp2 === 5) {
+          rank = "S";
+        }
         for (var i = 0; i < secTwoInputs.length; i++) {
-          cost += secTwoInputs[i].price;
+          cost += secTwoInputs[i].price * secTwoInputs[i].quantity;
         }
         for (var i = 0; i < secOneInputs.length; i++) {
-          cost += secOneInputs[i].price;
+          cost += secOneInputs[i].price * secOneInputs[i].quantity;
         }
         cost = parseFloat(cost.toFixed(2));
         document.getElementById("instant-workers").innerHTML = workers;
@@ -903,6 +913,14 @@
             updateSecTwo(secTwoInputs);
             return;
           }
+        }
+        if (
+          parseInt(document.getElementById("quantity-sec-two").value) +
+            fleetInfo.workers >
+          fleetInfo.spaceshipCapacity
+        ) {
+          alert("Exceed the spaceship capacity!");
+          return;
         }
         secTwoInputs.unshift({
           mp: parseInt(document.getElementById("mp-sec-two").value) || 0,

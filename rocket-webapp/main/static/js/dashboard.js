@@ -67,6 +67,25 @@ am5.ready(async function () {
     })
   );
 
+  xAxis.children.push(
+    am5.Label.new(root, {
+      text: "MP",
+      x: am5.p50,
+      centerX: am5.p50,
+      fill: am5.color(0xb5b5c3),
+    })
+  );
+
+  yAxis.children.unshift(
+    am5.Label.new(root, {
+      rotation: -90,
+      text: "Price in ETL",
+      y: am5.p50,
+      centerX: am5.p50,
+      fill: am5.color(0xb5b5c3),
+    })
+  );
+
   // Add series
   // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
   var series = chart.series.push(
@@ -94,6 +113,12 @@ am5.ready(async function () {
   // Set data
   series.data.setAll(data);
   xAxis.data.setAll(data);
+
+  function updateGraph() {
+    series.data.setAll(data);
+    xAxis.data.setAll(data);
+  }
+  setInterval(updateGraph, 10000);
 
   // Make stuff animate on load
   // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -158,6 +183,25 @@ am5.ready(async function () {
     })
   );
 
+  xAxis2.children.push(
+    am5.Label.new(root2, {
+      text: "MP",
+      x: am5.p50,
+      centerX: am5.p50,
+      fill: am5.color(0xb5b5c3),
+    })
+  );
+
+  yAxis2.children.unshift(
+    am5.Label.new(root2, {
+      rotation: -90,
+      text: "Price in USD",
+      y: am5.p50,
+      centerX: am5.p50,
+      fill: am5.color(0xb5b5c3),
+    })
+  );
+
   // Add series
   // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
   var series2 = chart2.series.push(
@@ -186,6 +230,20 @@ am5.ready(async function () {
   series2.data.setAll(data2);
   xAxis2.data.setAll(data2);
 
+  function updateGraph2() {
+    var data2 = [];
+
+    data.forEach((v, i) => {
+      data2.push({
+        category: data[i].category,
+        value: data[i].value * etlPrice,
+      });
+    });
+
+    series2.data.setAll(data2);
+    xAxis2.data.setAll(data2);
+  }
+  setInterval(updateGraph2, 10000);
   // Make stuff animate on load
   // https://www.amcharts.com/docs/v5/concepts/animations/
   series2.appear(1000);
