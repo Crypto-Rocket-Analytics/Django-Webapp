@@ -2,7 +2,7 @@ from django.http import response
 from django.http import JsonResponse
 from django.shortcuts import render
 import json
-import threading
+import asyncio
 import requests
 import pandas as pd
 import numpy as np
@@ -11,10 +11,10 @@ PAGE_VIEW_COUNT = 0
 ADD_BUTTON_CLICK_COUNT = 0
 CALCULATE_BUTTON_CLICK_COUNT = 0
 DATA = []
+res_wk = []
+res_sp = []
 
 def data_fresh(req):
-    context = {"data1": 1,
-               "data2": 2}
     api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
     res = requests.get(api).json()
     etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
@@ -34,8 +34,6 @@ def data_fresh(req):
 
 # Used in dashboard.js
 def full_data_fresh(req):
-    context = {"data1": 1,
-               "data2": 2}
     df_spaceships, df_workers = getRawData()
     wk_prices = get_min_workers(df_workers)
     response = []
@@ -51,8 +49,6 @@ def full_data_fresh(req):
 def index(request):
     global PAGE_VIEW_COUNT
     PAGE_VIEW_COUNT += 1
-    context = {"data1": 1,
-               "data2": 2}
     api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
     res = requests.get(api).json()
     etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
@@ -71,57 +67,40 @@ def index(request):
     return render(request, 'main/index.html', {'response':response})
 
 
-def sendReq(gop, url, data, headers):
-    furl = url
-    print(furl)
-    if gop == 'POST':
-        response = requests.post(url, data=data, headers=headers)
-    elif gop == 'GET':
-        response = requests.get(furl, data={}, headers=headers)
-    else:
-        response = requests.delete(furl, data={}, headers=headers)
-    return response
+async def sendReq(url_sp, url_wk):
+    global res_sp
+    global res_wk
+    headers = {
+    'Content-type': 'application/json',
+    }
+    url_sp.extend(url_wk)
+    loop = asyncio.get_event_loop()
+    futures = [
+        loop.run_in_executor(
+            None, 
+            requests.get, 
+            url_sp[i]
+        )
+        for i in range(10)
+    ]
+    for response in await asyncio.gather(*futures):
+        if response.url.find('spaceships') != -1:
+            res_sp.extend(response.json()['data'])
+        elif response.url.find('workers') != -1:
+            res_wk.extend(response.json()['data'])
 
 # Get raw data
 def getRawData():
-    def sendReq(gop, url, data, headers):
-        furl = url
-        print(furl)
-        if gop == 'POST':
-            response = requests.post(url, data=data, headers=headers)
-        elif gop == 'GET':
-            response = requests.get(furl, data={}, headers=headers)
-        else:
-            response = requests.delete(furl, data={}, headers=headers)
-        return response
+    global res_sp
+    global res_wk
     
-    headers = {
-        'Content-type': 'application/json',
-    }
-    data = {}
-
     url_sp = ['https://api.cryptomines.app/api/spaceships?level=1&page=1&limit=10000&sort=eternal', 
           'https://api.cryptomines.app/api/spaceships?level=2&page=1&limit=10000&sort=eternal', 
           'https://api.cryptomines.app/api/spaceships?level=3&page=1&limit=10000&sort=eternal', 
           'https://api.cryptomines.app/api/spaceships?level=4&page=1&limit=10000&sort=eternal', 
           'https://api.cryptomines.app/api/spaceships?level=5&page=1&limit=10000&sort=eternal']
-
-    res_sp = []
-    for url in url_sp:
-        response = sendReq('GET', url, data, headers)
-        res = response.json()
-        res_sp.extend(res['data'])
         
-    df_spaceships = pd.json_normalize(res_sp)
-    df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
-    df_spaceships = df_spaceships[df_spaceships['nftData.level'] != 0]
 
-    
-    
-    headers = {
-    'Content-type': 'application/json',
-    }
-    data = {}
 
     url_wk = ['https://api.cryptomines.app/api/workers?level=1&page=1&limit=10000&sort=eternal',
          'https://api.cryptomines.app/api/workers?level=2&page=1&limit=10000&sort=eternal',
@@ -130,17 +109,20 @@ def getRawData():
           'https://api.cryptomines.app/api/workers?level=5&page=1&limit=10000&sort=eternal']
     
     res_wk = []
-    for url in url_wk:
-        response = sendReq('GET', url, data, headers)
-        res = response.json()
-        res_wk.extend(res['data'])
+    res_sp = []
+
+    loop = asyncio.new_event_loop()
+    loop.run_until_complete(sendReq(url_sp, url_wk))
+
+    df_spaceships = pd.json_normalize(res_sp)
+    df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
+    df_spaceships = df_spaceships[df_spaceships['nftData.level'] != 0]
         
     df_workers = pd.json_normalize(res_wk)
     df_workers['price'] = df_workers['price'].astype(float) / 1000000000000000000
     df_workers = df_workers[df_workers['nftData.level'] != 0]
 
     return df_spaceships, df_workers
-
 
 def returnLowestCost(spaceshipSummary, workerSummary, df_spaceships, df_workers):
     # Process spaceship raw data
