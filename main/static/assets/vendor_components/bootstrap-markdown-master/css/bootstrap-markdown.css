@@ -269,10 +269,6 @@
             box-shadow: none;
 }
 
-.md-footer .icon-ok
-{
-    font-family: 'Material-Design-Iconic-Font';
-}
 .md-footer .icon-ok:before
 {
     content: '';
