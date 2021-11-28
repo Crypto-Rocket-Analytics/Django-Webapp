@@ -1,1 +1,1 @@
-web: python3 manage.py runserver 80
+web: python3 manage.py runserver
