@@ -2602,8 +2602,6 @@ Margin property
   margin-right: 50px; }
 .rtl .todo-list > li .tools {
   float: left; }
-.rtl .owl-carousel, .rtl .flexslider2, .rtl .flexslider {
-  direction: ltr; }
 .rtl .slider.slider-vertical .slider-tick, .rtl .slider.slider-vertical .slider-handle {
   margin-right: -10px;
   margin-top: -10px; }

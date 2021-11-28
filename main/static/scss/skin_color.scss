@@ -1161,10 +1161,6 @@ body{
     .ribbon-wrapper-right-bottom{
         background-color: lighten($body-dark, 15%);
     }
-    .flexslider{
-        background: $dark3;
-        border-color: transparent;
-    }
     .slider-track{        
         background-color: lighten($body-dark, 15%);
         background-image: -moz-linear-gradient(top, lighten($body-dark, 15%), lighten($body-dark, 15%));
