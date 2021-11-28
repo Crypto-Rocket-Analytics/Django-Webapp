@@ -49,22 +49,7 @@ def full_data_fresh(req):
 def index(request):
     global PAGE_VIEW_COUNT
     PAGE_VIEW_COUNT += 1
-    api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
-    res = requests.get(api).json()
-    etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
-    df_spaceships, df_workers = getRawData()
-    sp_prices = get_min_spaceships(df_spaceships)
-    wk_prices = get_min_workers(df_workers)
-    response = []
-    for i in sp_prices:
-        res = {}
-        res['spaceships'] = i
-        res['etlspaceships'] = round(i * etlspaceships, 2)
-        response.append(res)
-    for i in range(len(response)):
-        res = response[i]
-        res['workers'] = wk_prices[i]
-    return render(request, 'main/index.html', {'response':response})
+    return render(request, 'main/index.html')
 
 
 async def sendReq(url_sp, url_wk):
