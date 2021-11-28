@@ -1,1 +1,1 @@
-web: gunicorn rocket-webapp.wsgi --log-file -
+web: python3 manage.py runserver 80
