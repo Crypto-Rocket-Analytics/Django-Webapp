@@ -944,6 +944,9 @@
       function clearAll() {
         resetHandlerTwo();
         resetHandlerOne();
+        document.getElementById("seven-roi").innerHTML = "";
+        document.getElementById("fifteen-roi").innerHTML = "";
+        document.getElementById("thirty-roi").innerHTML = "";
       }
       function updateSecOne(data) {
         var htmlData = "";
@@ -1022,38 +1025,32 @@
           } else {
             if (successRate[29][rank] + (mp - 3000) / 50 > 91) {
               sevenRoi =
-                complexTable[parseInt(mp / 100) - 1].mineReward * 7 * 91 -
-                complexTable[parseInt(mp / 100) - 1].fuelCost * 7 -
+                complexTable[29].mineReward * 7 * 91 -
+                complexTable[29].fuelCost * 7 -
                 workers * 7;
               fifteenRoi =
-                complexTable[parseInt(mp / 100) - 1].mineReward * 15 * 91 -
-                complexTable[parseInt(mp / 100) - 1].fuelCost * 15 -
+                complexTable[29].mineReward * 15 * 91 -
+                complexTable[29].fuelCost * 15 -
                 workers * 7 * 0.93;
               thirtyRoi =
-                complexTable[parseInt(mp / 100) - 1].mineReward * 30 * 91 -
-                complexTable[parseInt(mp / 100) - 1].fuelCost * 30 -
+                complexTable[29].mineReward * 30 * 91 -
+                complexTable[29].fuelCost * 30 -
                 workers * 30 * 0.9;
             } else {
               sevenRoi =
-                complexTable[parseInt(mp / 100) - 1].mineReward *
-                  7 *
-                  successRate[29][rank] +
+                complexTable[29].mineReward * 7 * successRate[29][rank] +
                 (mp - 3000) / 50 -
-                complexTable[parseInt(mp / 100) - 1].fuelCost * 7 -
+                complexTable[29].fuelCost * 7 -
                 workers * 7;
               fifteenRoi =
-                complexTable[parseInt(mp / 100) - 1].mineReward *
-                  15 *
-                  successRate[29][rank] +
+                complexTable[29].mineReward * 15 * successRate[29][rank] +
                 (mp - 3000) / 50 -
-                complexTable[parseInt(mp / 100) - 1].fuelCost * 15 -
+                complexTable[29].fuelCost * 15 -
                 workers * 7 * 0.93;
               thirtyRoi =
-                complexTable[parseInt(mp / 100) - 1].mineReward *
-                  30 *
-                  successRate[29][rank] +
+                complexTable[29].mineReward * 30 * successRate[29][rank] +
                 (mp - 3000) / 50 -
-                complexTable[parseInt(mp / 100) - 1].fuelCost * 30 -
+                complexTable[29].fuelCost * 30 -
                 workers * 30 * 0.9;
             }
           }
