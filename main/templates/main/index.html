@@ -734,6 +734,7 @@
               jsInnerHTML;
           });
         }
+        refresh();
         setInterval(refresh, 10000);
       });
     </script>
@@ -826,6 +827,7 @@
           return ret;
         });
       }
+      dataGrabber()
       setInterval(dataGrabber, 10000);
       etlPriceFetcher();
       setInterval(etlPriceFetcher, 10000);
