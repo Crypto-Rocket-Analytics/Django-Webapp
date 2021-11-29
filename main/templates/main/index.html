@@ -902,7 +902,7 @@
             parseInt(document.getElementById("star-sec-one").value)
           ) {
             secOneInputs[i].quantity += parseInt(
-              document.getElementById("quantity-sec-one").value || 0
+              document.getElementById("quantity-sec-one").value || 1
             );
             document.getElementById("star-sec-one").value = "";
             document.getElementById("quantity-sec-one").value = "";
@@ -911,9 +911,9 @@
           }
         }
         secOneInputs.unshift({
-          star: parseInt(document.getElementById("star-sec-one").value) || 0,
+          star: parseInt(document.getElementById("star-sec-one").value) || 1,
           quantity:
-            parseInt(document.getElementById("quantity-sec-one").value) || 0,
+            parseInt(document.getElementById("quantity-sec-one").value) || 1,
         });
         document.getElementById("star-sec-one").value = "";
         document.getElementById("quantity-sec-one").value = "";
@@ -927,7 +927,7 @@
             parseInt(document.getElementById("mp-sec-two").value)
           ) {
             secTwoInputs[i].quantity += parseInt(
-              document.getElementById("quantity-sec-two").value || 0
+              document.getElementById("quantity-sec-two").value || 1
             );
             document.getElementById("mp-sec-two").value = "";
             document.getElementById("quantity-sec-two").value = "";
@@ -944,9 +944,9 @@
           return;
         }
         secTwoInputs.unshift({
-          mp: parseInt(document.getElementById("mp-sec-two").value) || 0,
+          mp: parseInt(document.getElementById("mp-sec-two").value) || 1,
           quantity:
-            parseInt(document.getElementById("quantity-sec-two").value) || 0,
+            parseInt(document.getElementById("quantity-sec-two").value) || 1,
         });
         document.getElementById("mp-sec-two").value = "";
         document.getElementById("quantity-sec-two").value = "";
