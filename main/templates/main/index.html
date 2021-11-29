@@ -1057,18 +1057,18 @@
                 workers * 30 * 0.9;
             } else {
               sevenRoi =
-                complexTable[29].mineReward * 7 * successRate[29][rank] +
-                (mp - 3000) / 50 -
+                complexTable[29].mineReward * 7 * (successRate[29][rank] +
+                parseFloat(((mp - 3000) / 5000).toFixed(2))) -
                 complexTable[29].fuelCost * 7 -
                 workers * 7;
               fifteenRoi =
-                complexTable[29].mineReward * 15 * successRate[29][rank] +
-                (mp - 3000) / 50 -
+                complexTable[29].mineReward * 15 * (successRate[29][rank] +
+                parseFloat(((mp - 3000) / 5000).toFixed(2))) -
                 complexTable[29].fuelCost * 15 -
                 workers * 7 * 0.93;
               thirtyRoi =
-                complexTable[29].mineReward * 30 * successRate[29][rank] +
-                (mp - 3000) / 50 -
+                complexTable[29].mineReward * 30 * (successRate[29][rank] +
+                parseFloat(((mp - 3000) / 5000).toFixed(2))) -
                 complexTable[29].fuelCost * 30 -
                 workers * 30 * 0.9;
             }
