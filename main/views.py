@@ -111,12 +111,18 @@ def getRawData():
     else:
         loop = asyncio.new_event_loop()
         loop.run_until_complete(sendReq(url_sp, url_wk))
-        a = open('data/res_wk', 'w')
-        a.write(json.dumps(({"created_at": time.time(), "res_wk": res_wk})))
-        a.close()
-        b = open('data/res_sp', 'w')
-        b.write(json.dumps(({"created_at": time.time(), "res_sp": res_sp})))
-        b.close()
+        if len(res_wk) != 0:
+            a = open('data/res_wk', 'w')
+            a.write(json.dumps(({"created_at": time.time(), "res_wk": res_wk})))
+            a.close()
+        else:
+            res_wk = data_r['res_wk']
+        if len(res_sp) != 0:
+            b = open('data/res_sp', 'w')
+            b.write(json.dumps(({"created_at": time.time(), "res_sp": res_sp})))
+            b.close()
+        else:
+            res_sp = data_r2['res_sp']
 
     df_spaceships = pd.json_normalize(res_sp)
     df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
