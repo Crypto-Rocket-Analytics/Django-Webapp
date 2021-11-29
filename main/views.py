@@ -4,6 +4,7 @@ from django.shortcuts import render
 import json
 import asyncio
 import requests
+import time
 import pandas as pd
 import numpy as np
 
@@ -96,13 +97,31 @@ def getRawData():
     res_wk = []
     res_sp = []
 
-    loop = asyncio.new_event_loop()
-    loop.run_until_complete(sendReq(url_sp, url_wk))
+    a = open('data/res_wk', 'r')
+    data_r = json.loads(a.read().replace("'", '"'))
+    a.close()
+
+    b = open('data/res_sp', 'r')
+    data_r2 = json.loads(b.read().replace("'", '"'))
+    b.close()
+
+    if data_r['created_at'] + 60 > time.time():
+        res_wk = data_r['res_wk']
+        res_sp = data_r2['res_sp']
+    else:
+        loop = asyncio.new_event_loop()
+        loop.run_until_complete(sendReq(url_sp, url_wk))
+        a = open('data/res_wk', 'w')
+        a.write(json.dumps(({"created_at": time.time(), "res_wk": res_wk})))
+        a.close()
+        b = open('data/res_sp', 'w')
+        b.write(json.dumps(({"created_at": time.time(), "res_sp": res_sp})))
+        b.close()
 
     df_spaceships = pd.json_normalize(res_sp)
     df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
     df_spaceships = df_spaceships[df_spaceships['nftData.level'] != 0]
-        
+
     df_workers = pd.json_normalize(res_wk)
     df_workers['price'] = df_workers['price'].astype(float) / 1000000000000000000
     df_workers = df_workers[df_workers['nftData.level'] != 0]
