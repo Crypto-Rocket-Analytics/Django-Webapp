@@ -12,37 +12,59 @@ PAGE_VIEW_COUNT = 0
 ADD_BUTTON_CLICK_COUNT = 0
 CALCULATE_BUTTON_CLICK_COUNT = 0
 DATA = []
-res_wk = []
-res_sp = []
 
 def data_fresh(req):
-    api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
-    res = requests.get(api).json()
-    etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
-    df_spaceships, df_workers = getRawData()
-    sp_prices = get_min_spaceships(df_spaceships)
-    wk_prices = get_min_workers(df_workers)
-    response = []
-    for i in sp_prices:
-        res = {}
-        res['spaceships'] = i
-        res['etlspaceships'] = round(i * etlspaceships, 2)
-        response.append(res)
-    for i in range(len(response)):
-        res = response[i]
-        res['workers'] = wk_prices[i]
+    a = open('data/data_fresh', 'r')
+    data_r = json.loads(a.read().replace("'", '"'))
+    a.close()
+    if data_r['created_at'] + 60 > time.time():
+        response = data_r['data_fresh']
+    else:
+        api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
+        res = requests.get(api).json()
+        etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
+        df_spaceships, df_workers = getRawData()
+        sp_prices = get_min_spaceships(df_spaceships)
+        wk_prices = get_min_workers(df_workers)
+        response = []
+        for i in sp_prices:
+            res = {}
+            res['spaceships'] = i
+            res['etlspaceships'] = round(i * etlspaceships, 2)
+            response.append(res)
+        for i in range(len(response)):
+            res = response[i]
+            res['workers'] = wk_prices[i]
+        if len(response) != 5:
+            response = data_r['data_fresh']
+        else:
+            a = open('data/data_fresh', 'w')
+            a.write(json.dumps(({"created_at": time.time(), "data_fresh": response})))
+            a.close()
     return JsonResponse(response, safe=False)
 
 # Used in dashboard.js
 def full_data_fresh(req):
-    df_spaceships, df_workers = getRawData()
-    wk_prices = get_min_workers(df_workers)
-    response = []
-    for i in range(len(response), len(wk_prices)):
-        res = {}
-        res['category'] = i + 15
-        res['value'] = wk_prices[i]
-        response.append(res)
+    a = open('data/full_data_fresh', 'r')
+    data_r = json.loads(a.read().replace("'", '"'))
+    a.close()
+    if data_r['created_at'] + 60 > time.time():
+        response = data_r['full_data_fresh']
+    else:
+        df_spaceships, df_workers = getRawData()
+        wk_prices = get_min_workers(df_workers)
+        response = []
+        for i in range(len(response), len(wk_prices)):
+            res = {}
+            res['category'] = i + 15
+            res['value'] = wk_prices[i]
+            response.append(res)
+        if len(response) < 200:
+            response = data_r['full_data_fresh']
+        else:
+            a = open('data/full_data_fresh', 'w')
+            a.write(json.dumps(({"created_at": time.time(), "full_data_fresh": response})))
+            a.close()
 
     return JsonResponse(response, safe=False)
 
@@ -97,32 +119,8 @@ def getRawData():
     res_wk = []
     res_sp = []
 
-    a = open('data/res_wk', 'r')
-    data_r = json.loads(a.read().replace("'", '"'))
-    a.close()
-
-    b = open('data/res_sp', 'r')
-    data_r2 = json.loads(b.read().replace("'", '"'))
-    b.close()
-
-    if data_r['created_at'] + 60 > time.time():
-        res_wk = data_r['res_wk']
-        res_sp = data_r2['res_sp']
-    else:
-        loop = asyncio.new_event_loop()
-        loop.run_until_complete(sendReq(url_sp, url_wk))
-        if len(res_wk) != 0:
-            a = open('data/res_wk', 'w')
-            a.write(json.dumps(({"created_at": time.time(), "res_wk": res_wk})))
-            a.close()
-        else:
-            res_wk = data_r['res_wk']
-        if len(res_sp) != 0:
-            b = open('data/res_sp', 'w')
-            b.write(json.dumps(({"created_at": time.time(), "res_sp": res_sp})))
-            b.close()
-        else:
-            res_sp = data_r2['res_sp']
+    loop = asyncio.new_event_loop()
+    loop.run_until_complete(sendReq(url_sp, url_wk))
 
     df_spaceships = pd.json_normalize(res_sp)
     df_spaceships['price'] = df_spaceships['price'].astype(float) / 1000000000000000000
