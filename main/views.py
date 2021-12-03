@@ -14,12 +14,35 @@ CALCULATE_BUTTON_CLICK_COUNT = 0
 DATA = []
 
 def data_fresh(req):
-    a = open('data/data_fresh', 'r')
-    data_r = json.loads(a.read().replace("'", '"'))
-    a.close()
-    if data_r['created_at'] + 60 > time.time():
-        response = data_r['data_fresh']
-    else:
+    try:
+        a = open('data/data_fresh', 'r')
+        data_r = json.loads(a.read().replace("'", '"'))
+        a.close()
+        if data_r['created_at'] + 60 > time.time():
+            response = data_r['data_fresh']
+        else:
+            api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
+            res = requests.get(api).json()
+            etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
+            df_spaceships, df_workers = getRawData()
+            sp_prices = get_min_spaceships(df_spaceships)
+            wk_prices = get_min_workers(df_workers)
+            response = []
+            for i in sp_prices:
+                res = {}
+                res['spaceships'] = i
+                res['etlspaceships'] = round(i * etlspaceships, 2)
+                response.append(res)
+            for i in range(len(response)):
+                res = response[i]
+                res['workers'] = wk_prices[i]
+            if len(response) != 5:
+                response = data_r['data_fresh']
+            else:
+                a = open('data/data_fresh', 'w')
+                a.write(json.dumps(({"created_at": time.time(), "data_fresh": response})))
+                a.close()
+    except:
         api = "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=11736&range=1D"
         res = requests.get(api).json()
         etlspaceships = list(res["data"]["points"].items())[-1][1]["v"][0]
@@ -35,22 +58,37 @@ def data_fresh(req):
         for i in range(len(response)):
             res = response[i]
             res['workers'] = wk_prices[i]
-        if len(response) != 5:
-            response = data_r['data_fresh']
-        else:
-            a = open('data/data_fresh', 'w')
-            a.write(json.dumps(({"created_at": time.time(), "data_fresh": response})))
-            a.close()
+
+        a = open('data/data_fresh', 'w')
+        a.write(json.dumps(({"created_at": time.time(), "data_fresh": response})))
+        a.close()
+
     return JsonResponse(response, safe=False)
 
 # Used in dashboard.js
 def full_data_fresh(req):
-    a = open('data/full_data_fresh', 'r')
-    data_r = json.loads(a.read().replace("'", '"'))
-    a.close()
-    if data_r['created_at'] + 60 > time.time():
-        response = data_r['full_data_fresh']
-    else:
+    try:
+        a = open('data/full_data_fresh', 'r')
+        data_r = json.loads(a.read().replace("'", '"'))
+        a.close()
+        if data_r['created_at'] + 60 > time.time():
+            response = data_r['full_data_fresh']
+        else:
+            df_spaceships, df_workers = getRawData()
+            wk_prices = get_min_workers(df_workers)
+            response = []
+            for i in range(len(response), len(wk_prices)):
+                res = {}
+                res['category'] = i + 15
+                res['value'] = wk_prices[i]
+                response.append(res)
+            if len(response) < 200:
+                response = data_r['full_data_fresh']
+            else:
+                a = open('data/full_data_fresh', 'w')
+                a.write(json.dumps(({"created_at": time.time(), "full_data_fresh": response})))
+                a.close()
+    except:
         df_spaceships, df_workers = getRawData()
         wk_prices = get_min_workers(df_workers)
         response = []
@@ -59,12 +97,9 @@ def full_data_fresh(req):
             res['category'] = i + 15
             res['value'] = wk_prices[i]
             response.append(res)
-        if len(response) < 200:
-            response = data_r['full_data_fresh']
-        else:
-            a = open('data/full_data_fresh', 'w')
-            a.write(json.dumps(({"created_at": time.time(), "full_data_fresh": response})))
-            a.close()
+        a = open('data/full_data_fresh', 'w')
+        a.write(json.dumps(({"created_at": time.time(), "full_data_fresh": response})))
+        a.close()
 
     return JsonResponse(response, safe=False)
 
